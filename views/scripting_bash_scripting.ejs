@@ -1,0 +1,356 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+
+<!-- SYNTAX SECTION -->
+<section>
+  <h2>Syntax</h2>
+  <br>
+  <div class="indent">
+    <p>
+      Bash scripts are notoriously silent about errors and non-existant code. It is common to attempt to work on a variable or function with no indication of what is wrong only to find the variable or function doesn't exist or is misnamed or
+      something.
+    </p>
+    <p>
+      For this reason, any script or program with reasonalble complexity is better done with another computer language like Python or Ruby.
+    </p>
+  </div>
+  <hr>
+  <div class="indent">
+    <p>
+      This indicates a bash command...
+      <ul class="no-dot">
+        <li><code>&nbsp ~$ &nbsp</code></li>
+      </ul>
+    </p>
+    <p>
+      This indicates a bash return value...
+      <ul class="no-dot">
+        <li><code>&nbsp >> &nbsp</code></li>
+      </ul>
+    </p>
+  </div>
+  <hr>
+
+  <!-- VARIABLES -->
+  <article>
+    <h3>Variables</h3>
+    <div class="indent">
+      <p>
+        Setting a variable (no spaces):
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ some_var="a string or something"&nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        Calling a variable (use $):
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ echo $some_var &nbsp</code> </li>
+          <li> <code>&nbsp>> a string or something &nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        Using variables in strings (use ${}):
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ echo "Insert my ${some_var}" &nbsp</code> </li>
+          <li> <code>&nbsp>> Insert my a string or something &nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        Using commands in strings (use backtiks):
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ echo "Insert `wc -l < /home/thing`" &nbsp</code> </li> <li> <code>&nbsp>> Insert 15 &nbsp</code> </li>
+        </ul>
+      </p>
+    </div>
+  </article>
+  <hr>
+  <!-- ARGUMENTS -->
+  <article>
+    <h3>Arguments</h3>
+    <div class="indent">
+      <p>
+        Number of arguments that the script uses.:
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ $#&nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        Name of the script file
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ $0&nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        Individual arguments
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ $1 <em># argument 1</em> &nbsp</code> </li>
+          <li> <code>&nbsp~$ $2 <em># argument 2</em> &nbsp</code> </li>
+          <li> <code>&nbsp~$ <em>etc.</em> &nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        All of the arguments (returns an array)
+        <ul class="no-dot">
+          <li> <code>&nbsp~$ $@&nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        Enter arguments into a script and running it.
+        <ul class="no-dot">
+          <li><code>&nbsp~$ ./filename.sh firstarg secondarg thirdarg&nbsp</code></li>
+        </ul>
+      </p>
+
+    </div>
+
+  </article>
+  <hr>
+  <!-- CONDITIONALS -->
+  <article>
+    <h3>Conditionals</h3>
+    <div class="indent">
+      <p>
+        <em> Conditional Statement (Old Style. Portable to other shells.)
+        </em>
+        <ul class="no-dot">
+          <li>
+            <pre> <code>
+    if [ conditional ]; then
+      <em># code</em>
+    fi
+                </code> </pre>
+          </li>
+        </ul>
+      </p>
+
+      <p>
+        <em> Conditional Statement (Older Style for Numbers using String Operators.)
+        </em>
+        <ul class="no-dot">
+          <li>
+            <pre> <code>
+    if (( conditional )); then
+      <em># code</em>
+    fi
+                </code> </pre>
+          </li>
+        </ul>
+      </p>
+
+      <p>
+        <em> Conditional Statement (Newer Style. Bash shell only.)
+        </em>
+        <ul class="no-dot">
+          <li>
+            <pre> <code>
+    if [[ conditional ]]; then
+      <em># code</em>
+    fi
+                </code> </pre>
+          </li>
+        </ul>
+      </p>
+    </div>
+
+  </article>
+  <hr>
+  <!-- CONDITIONAL OPERATORS -->
+  <article>
+    <h3>Conditional Operators (Older. Single Brackets [])</h3>
+    <div class="indent">
+      <table>
+        <tr>
+          <td class="col100">=</td>
+          <td>equality for strings</td>
+        </tr>
+        <tr>
+          <td class="col100">!=</td>
+          <td>inequality for strings</td>
+        </tr>
+        <tr>
+          <td class="col100">-eq</td>
+          <td>equality for numbers</td>
+        </tr>
+        <tr>
+          <td class="col100">-ne</td>
+          <td>inequality for numbers</td>
+        </tr>
+        <tr>
+          <td class="col100">-gt</td>
+          <td>is greater than</td>
+        </tr>
+        <tr>
+          <td class="col100">-lt</td>
+          <td>is less than</td>
+        </tr>
+        <tr>
+          <td class="col100">-ge</td>
+          <td>is greater than or equal to</td>
+        </tr>
+        <tr>
+          <td class="col100">-le</td>
+          <td>is less than or equal to</td>
+        </tr>
+        <tr>
+          <td class="col100">&&</td>
+          <td>logical AND</td>
+        </tr>
+        <tr>
+          <td class="col100">||</td>
+          <td>logical OR</td>
+        </tr>
+        <tr>
+          <td class="col100">-n</td>
+          <td>is not NULL</td>
+        </tr>
+        <tr>
+          <td class="col100">-z</td>
+          <td>is of zero length, is NULL</td>
+        </tr>
+      </table>
+      </p>
+    </div>
+
+  </article>
+  <hr>
+  <!-- CONDITIONAL OPERATORS -->
+  <article>
+    <h3>Conditional Operators
+    </h3>
+    <p> <em>Numbers using String Operators. Double Parentheses (())</em></p>
+    <br>
+    <div class="indent">
+      <table>
+        <tr>
+          <td class="col100">==</td>
+          <td>equality</td>
+        </tr>
+        <tr>
+          <td class="col100">!=</td>
+          <td>inequality</td>
+        </tr>
+        <tr>
+          <td class="col100">></td>
+          <td>is greater than</td>
+        </tr>
+        <tr>
+          <td class="col100">
+            <</td> <td>is less than
+          </td>
+        </tr>
+        <tr>
+          <td class="col100">>=</td>
+          <td>is greater than or equal to</td>
+        </tr>
+        <tr>
+          <td class="col100">
+            <=</td> <td>is less than or equal to
+          </td>
+        </tr>
+
+      </table>
+      </p>
+    </div>
+
+  </article>
+  <hr>
+  <!-- CONDITIONALS -->
+  <article>
+    <h3>Conditionals Examples</h3>
+    <div class="indent">
+      <p>
+        <ul class="no-dot">
+          <li>
+            <pre><code>
+    NUM_REQUIRED_ARG=2
+    num_args=$#
+
+    if [ num_args -lt NUM_REQUIRED_ARG ]; then
+      echo "Not enough arguments"
+      echo "Call this script with ${0} &lt;name&gt; &lt;number&gt;"
+    fi
+
+    exit 1
+                </code></pre>
+          </li>
+        </ul>
+      </p>
+    </div>
+
+  </article>
+  <hr>
+  <!-- LOOPS -->
+  <article>
+    <h3>Loops</h3>
+    <div class="indent">
+      <h4>For Loop</h4>
+      <p><em>Example...</em></p>
+      <pre> <code>
+    for arg in '$@'; do
+      echo '$arg'
+    done
+          </code> </pre>
+
+    </div>
+  </article>
+  <hr>
+
+  <!-- FUNCTIONS -->
+  <article>
+    <h3>Functions</h3>
+    <div class="indent">
+      <p>Functions can be declared with or without the keyword 'Function'.</p>
+      <p>Parameters are not defined in the parentheses but rather inside the body of the function. $1 for the first parameter, $2 for the second, etc.</p>
+      <p>
+        Commented out notes are useful to describe the parameters inside of the function.
+      </p>
+      </p> When the function is called, the arguments are listed after the function name witout parentheses.</p>
+      <br>
+      <p>Declaring a function...</p>
+      <pre><code>
+    function something() {
+      <em># $1 = some_parameter</em>
+      <em># $2 = another_parameter</em>
+      <em># code to run</em>
+    }
+            </code> </pre>
+      <p>Calling a function...</p>
+      <code>&nbsp;something arg1 arg2&nbsp;</code>
+    </div>
+  </article>
+  <hr>
+
+  <!-- SCRIPTING -->
+  <article>
+    <h3>Exit Codes</h3>
+    <div class="indent">
+
+      <p>Exit and Exit codes will terminate the script and exit the shell.</p>
+      <p>
+        Exit codes can be any number from 0 to 255. Exit codes are not required but should be coded explicitly.
+      </p>
+      <p>
+        0 = no errors.
+        <ul class="no-dot">
+          <li> <code>&nbspexit $0&nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        ? = return the last command in script
+        <ul class="no-dot">
+          <li> <code>&nbspexit $?&nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        12 = Any other number can be assigned a custom error code
+        <ul class="no-dot">
+          <li> <code>&nbspexit $12&nbsp</code> </li>
+        </ul>
+      </p>
+    </div>
+    <br>
+  </article>
+  <hr>
+
+</section>
+<% include ./partials/footer.ejs %>

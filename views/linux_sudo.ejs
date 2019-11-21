@@ -1,0 +1,53 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <h2>Sudo</h2>
+  <div class="indent">
+    <p>
+      If any changes to the sudo user are necessary only make those changes in the Visudo editor.
+    </p>
+    <p>
+      <code>&nbsp$ sudo visudo&nbsp</code>
+    </p>
+    <br>
+    <p>
+      Run as a user specified in a RUN_AS alias the configuration file (Sudoers File).
+    </p>
+    <p>
+      <code>&nbsp$ sudo -u run_as_alias command&nbsp</code>
+    </p>
+    <br>
+    <p>
+      Sudo will save authentication for a certain amount of time then the authentication will expire.
+    </p>
+    <p>
+      To clear the timer...
+    </p>
+    <p>
+      <code>&nbsp$ sudo -k&nbsp</code>
+    </p>
+    <br>
+    <p>
+      To 'prime' the sudo command to avoid being prompted or to renew the sudo timer...
+    </p>
+    <p>
+      <code>&nbsp$ sudo -v&nbsp</code>
+    </p>
+    <br>
+    <p>
+      To identify what privileges are given to your username...
+    </p>
+    <p>
+      <code>&nbsp$ sudo -l&nbsp</code>
+    </p>
+    <br>
+    <p>
+      If you forget to type <code>&nbspsudo&nbsp</code> when you try to run a command you can rerun the previous command as sudo...
+    </p>
+    <p>
+      <code>&nbsp$ sudo !!&nbsp</code>
+    </p>
+    <br>
+  </div>
+</section>
+<% include ./partials/footer.ejs %>

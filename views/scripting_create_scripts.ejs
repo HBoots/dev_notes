@@ -1,0 +1,90 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <article>
+    <h2>Creating Scripts</h2>
+    <div class="indent">
+      <p>
+        Script files need to begin with the below text in order to be called as regular commands.
+        <ul class="no-dot">
+          <li> <code>&nbsp#!/bin/bash&nbsp</code> </li>
+        </ul>
+      </p>
+      <p>
+        Linux doesn't use or pay attention to file extensions. However it is best practice to end all shell script files with <code>&nbsp.sh&nbsp</code>. It is easier to recognize the file type and syntax highlighting will be available in a text
+        editor.
+      </p>
+      <p>
+        By default shell scripts have only read permissions set for 'world' users.
+      </p>
+      <p>
+        Set executable permissions.
+        <ul class="no-dot">
+          <li> <code>&nbspchmod +x filename.sh&nbsp</code> </li>
+        </ul>
+      </p>
+    </div>
+  </article>
+  <br>
+  <article>
+    <h2>Scripts Directories</h2>
+    <div class="indent">
+      <p>
+        Custom scripts should be put in one of the following directories:
+      </p>
+      <div class="indent">
+        <table>
+          <tr>
+            <td class="col150">Single User </td>
+            <td> <code>&nbsp;~/bin&nbsp;</code></td>
+          </tr>
+          <tr>
+            <td>All Users </td>
+            <td><code>&nbsp;/usr/local/bin&nbsp;</code></td>
+          </tr>
+          <tr>
+            <td>Root User Only </td>
+            <td><code>&nbsp;/usr/local/sbin&nbsp;</code></td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        Avoid putting custom scripts in these directories. They hold scripts particular to the Linux distribution.
+      </p>
+      <div class="indent">
+        <code>&nbsp;/usr/bin&nbsp;</code>
+        <code>&nbsp;/sbin&nbsp;</code>
+        <code>&nbsp;/bin&nbsp;</code>
+      </div>
+    </div>
+  </article>
+  <br>
+  <article>
+    <h2>Running Scripts</h2>
+    <div class="indent">
+      <ol>
+        <li>Call as a normal command
+          <ul>
+            <li><p>Script must have <code>&nbsp;#!/bin/bash&nbsp;</code> as it's first line.</p></li>
+          </ul>
+        </li>
+        <li>Call with source
+          <ul>
+            <li><p><code>&nbsp;source /path/to/script&nbsp;</code></p></li>
+            <li><p><code>&nbsp;. /path/to/script&nbsp;</code></p></li>
+            <li><p>This is the only method that allow using arguments</p></li>
+          </ul>
+        </li>
+        <li>Use bash command
+          <ul>
+            <li><p><code>&nbsp;/bin/bash /path/to/script&nbsp;</code></p></li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+  </article>
+  <br>
+
+</section>
+<% include ./partials/footer.ejs %>

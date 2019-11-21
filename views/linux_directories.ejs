@@ -1,0 +1,335 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+      <table class='grid'>
+        <thead>
+          <tr>
+            <th>
+              Directory
+            </th>
+            <th>
+              Purpose
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col17">
+              <p>/</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>The root directory. Top level.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/bin</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Binaries that must be present for the system to boot
+                  and run</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/boot</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>The Linux kernel</p>
+                <li />
+                <p>Initial RAM disk image (for the drivers needed at boot
+                  time)</p>
+                <li />
+                <p>The boot loader.</p>
+                <p></p>
+                <li />
+                <p>/boot/vmlinuz = the Linux kernal</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/dev</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Device nodes. A list of all devices.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/etc</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>All system wide configuration files.
+                </p>
+                <li />
+                <p>Collection of shell scripts that start system services
+                  at boot time.</p>
+                <li />
+                <p>Everything in /etc should be readable text.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/home</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Each user has a /home directory</p>
+                <li />
+                <p>Non-root users can write files ONLY in their /home
+                  directory.</p>
+                <p></p>
+                <li />
+                <p>~ == a user's /home directory</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/lib</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Shared library files used by the core system programs</p>
+                <li />
+                <p>Similar to DLLs in Windows</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/lost+found</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Each formatted partition or device has this directory.</p>
+                <li />
+                <p>Used for recovery from a file corruption</p>
+                <li />
+                <p>Should be empty unless something bad has happened.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/media</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Newer</p>
+                <li />
+                <p>Mount points for removable devices.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/mnt</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Older</p>
+                <li />
+                <p>Mount points for removable devices.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/opt</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Used to install optional software</p>
+                <li />
+                <p>Holds commercial software that may be installed in the
+                  system</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/proc</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>A virtual file system maintained by Linux kernal</p>
+                <li />
+                <p>Contains readable files that show how the kernal works</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/root</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>home directory for the root account</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/sbin</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>System binaries</p>
+                <li />
+                <p>Programs that perform system tasks generally reserved
+                  for sudo</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/tmp</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>temporary files</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/usr</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Largest directory tree in the system</p>
+                <li />
+                <p>All programs and support files for regular users</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/usr/bin</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Executable programs installed by Linux distro</p>
+                <li />
+                <p>Typically very large (thousands of programs)</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/usr/lib</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Shared libraries for /usr/bin</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/usr/local</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>System wide programs NOT installed by the Linux distro</p>
+                <li />
+                <p>Populated by the admin user</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/usr/sbin</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>System admin programs</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/user/share</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Shared data used by programs in /usr/bin</p>
+                <li />
+                <p>Default confiruation files, icons, backgrounds, etc.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/usr/share/doc</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Documentation files on installed packages</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/var</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Files containing changing data</p>
+                <li />
+                <p>Databases, spool files, user mail, etc.</p>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col17">
+              <p>/var/log</p>
+            </td>
+            <td class="col83">
+              <ul>
+                <li />
+                <p>Log files</p>
+                <li />
+                <p>Should be monitored occasionally</p>
+                <li />
+                <p>Usually requires sudo to view</p>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+<% include ./partials/footer.ejs %>

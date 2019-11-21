@@ -1,0 +1,155 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <h2>Sudoers File (Giving Privileges)</h2>
+
+  <article>
+    <div class="indent">
+      <p>
+        <code>&nbsp/etc/sudoers&nbsp</code>
+      </p>
+      <br>
+      <p>
+        NEVER edit this file with a text editor. Use the <code>&nbspvisudo&nbsp</code> command.
+      </p>
+      <p>
+        <code>&nbsp$ sudo visudo&nbsp</code>
+      </p>
+      <br>
+      <p>
+        <code>&nbspvisudo&nbsp</code> opens a text editor (vi or Nano) and then validates the syntax of the file before saving. This prevents errors that could block sudo access.
+      </p>
+      <br>
+      <div class="highlight">
+
+        <h4>DEFAULTS</h4>
+        <div class="indent">
+          <p>
+            <code>&nbspDefaults env_reset&nbsp</code>
+          </p>
+          <p>
+            A safety measure that clears env variable
+          </p>
+          <p>
+            <code>&nbspDefaults mail_badpass&nbsp</code>
+          </p>
+          <p>
+            Allows notificaiton of any badsudo password attempts to the preconfigured mailto user.
+          </p>
+          <p>
+            <code>&nbspDefaults secure_paths="...&nbsp</code>
+          </p>
+          <p>
+            Specifies the PATH that will be used to sudo operations
+          </p>
+        </div>
+        <h4>USER PRIVILEGES</h4>
+        <div class="indent">
+          <p>
+            <code>&nbsproot ALL=(ALL:ALL) ALL&nbsp</code>
+          </p>
+          <p class="strip">
+            root user privileges
+          </p>
+          <p class="strip">
+            rule applies to ALL hosts =
+          </p>
+          <p class='strip'>
+            (run commands as ALL users : run commands as ALL groups)
+          </p>
+          <p class='strip'>
+            rule applies to ALL commands
+          </p>
+        </div>
+
+        <h4>GROUP PRIVILEGES</h4>
+        <div class="indent">
+          <p class="strip">
+            <code>&nbsp%admin ALL=(ALL) ALL&nbsp</code>
+          </p>
+          <p class="strip">
+            <code>&nbsp%sudo ALL=(ALL:ALL) ALL&nbsp</code>
+          </p>
+          <p>
+            % indicates a group name.
+          </p>
+          <p>
+            The admin group can execute any command as any user on any host. The sudo group can execute as any group as well.
+          </p>
+        </div>
+
+        <h4>SOURCED AND APPLIED FILES</h4>
+        <div class="indent">
+          <p class="strip">
+            <code>&nbsp#includedir /etc/sudoers.d&nbsp</code>
+          </p>
+          <p>
+            Files within the indicated directory follow the same rules as <code>&nbsp/etc/sudoers&nbsp</code>.
+          </p>
+          <p>
+            Unless a file ends in <code>&nbsp~&nbsp</code> or <code>&nbsp.&nbsp</code> it will be read and applied to the <code>&nbspsudo&nbsp</code> configuration.
+          </p>
+          <br>
+          <p>
+            ALWAYS edit files in this directory with <code>&nbspvisudo&nbsp</code>
+          </p>
+        </div>
+      </div>
+      <br>
+      <h4>Add a User to the Sudo Group</h4>
+      <div class="indent">
+        <p>
+          <code>&nbsp$ sudo usermod -aG sudo username&nbsp</code>
+        </p>
+      </div>
+      <br>
+      <h4>Aliases</h4>
+      <div class="indent">
+        <p>
+          Group Aliases
+        </p>
+        <p>
+          <code>&nbspUser_Alias&nbsp&nbspGROUPONE = user1, user2&nbsp</code>
+        </p>
+        <p>
+          Command Aliases
+        </p>
+        <p>
+          <code>&nbspCmnd_Alias&nbsp&nbspPOWER = /sbin/shutdown, /sbin/reboot, ...&nbsp</code>
+        </p>
+        <p>
+          Run As Aliases
+        </p>
+        <p>
+          <code>&nbspRunas_Alias&nbsp&nbspWEB = user1, user2</code>
+        </p>
+      </div>
+      <br>
+      <h4>Custom Rules</h4>
+      <div class="indent">
+        <p>
+          Assign rules for a group.
+        </p>
+        <p class="strip">
+          <code>&nbspGROUPONE&nbsp&nbspALL = /usr/bin/apt-get update</code>
+        </p>
+        <p class='strip'>
+          <code>&nbspGROUPONE&nbsp&nbspALL = POWER</code>
+        </p>
+      </div>
+      <br>
+      <h4>Random Insults</h4>
+      <div class="indent">
+        <p>
+          If you type in the wrong password you can configure the Sudoers File to return a random insult.
+        </p>
+        <p>
+          <code>&nbspDefaults insults&nbsp</code>
+        </p>
+      </div>
+    </div>
+    <br>
+  </article>
+  <hr>
+</section>
+<% include ./partials/footer.ejs %>

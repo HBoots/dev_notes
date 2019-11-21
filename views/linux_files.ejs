@@ -1,0 +1,53 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <article>
+    <h3>Downloading Files from a Source</h3>
+    <div class="indent">
+      <p>
+        <code>&nbsp;wget http://url/filname&nbsp;</code>
+      </p>
+      <p>
+        <code>&nbsp;curl http://url/filename&nbsp;</code>
+      </p>
+    </div>
+  </article>
+  <br>
+  <article>
+    <h3>Install a .deb File</h3>
+    <div class="indent">
+      <p>
+        Navigate to the containing directory. Unpackage and install the file. Likely there will be errors so run <code>&nbsp;install -f &nbsp;</code> to install missing dependencies.
+      </p>
+      <p>
+        <code>&nbsp;sudo dpkg -i filename.deb&nbsp;</code>
+      </p>
+      <p>
+        <code>&nbsp;sudo apt-get install -f&nbsp;</code>
+      </p>
+    </div>
+  </article>
+  <br>
+  <article>
+    <h3>Extracting Compressed (Tarball) Files</h3>
+    <div class="indent">
+      <p>
+        <code>&nbsp;.gz&nbsp;</code> files have fewer problems loading but are less compact than <code>&nbsp;.xz&nbsp;</code> files.
+      </p>
+      <p>
+        <code>&nbsp;tar -zxvf filename.tar.gz&nbsp;</code>
+      </p>
+      <p>
+        <code>&nbsp;tar -jxvf filename.tar.bz2&nbsp;</code>
+      </p>
+      <p>
+        <code>&nbsp;tar -xvf filename.tar.xz&nbsp;</code>
+      </p>
+      <p>
+        If there is a problem installing an <code>&nbsp;.xz&nbsp;</code> file, try installing a utility package. <code>&nbsp;sudo apt install xz-utils&nbsp;</code>
+      </p>
+    </div>
+  </article>
+  <br>
+</section>
+<% include ./partials/footer.ejs %>

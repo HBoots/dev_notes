@@ -1,0 +1,26 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <h2>Server Firewall UFW</h2>
+  <hr>
+  <article>
+    <p>
+      Allow all incoming HTTP
+    </p>
+    <p>
+      <code>&nbsp$ sudo ufw allow http&nbsp</code> <br>
+      <code>&nbsp$ sudo ufw allow 80&nbsp</code>
+    </p>
+    <br>
+    <p>
+      Allow all incoming HTTPS
+    </p>
+    <p>
+      <code>&nbsp$ sudo ufw allow https&nbsp</code> <br>
+      <code>&nbsp$ sudo ufw allow 443&nbsp</code>
+    </p>
+    <br>
+  </article>
+  <hr>
+</section>
+<% include ./partials/footer.ejs %>

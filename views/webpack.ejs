@@ -1,0 +1,671 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+
+<h2>II: Installing and Running Webpack</h2>
+
+<h3>File Structure</h3>
+
+<p><em>Webpack_2</em></p>
+
+<hr />
+<article>
+  <p>
+    Typical file tree structure for a Webpack application...
+  </p>
+  <pre><code>
+  PROJECT_FILE
+    .git
+    dist
+      main.html
+      main.js
+      styles.css
+      vendor.js
+    node_modules
+    src
+      utils
+        utility_files.js
+      app
+        app.js
+        other_files.js
+      assets
+        image.jpg
+      index.js
+      stylesheet_1.css
+      stylesheet_2.css
+      template.html
+      vendor.js
+    .gitignore
+    package.json
+    webpack.common.config.js
+    webpack.dev.config.js
+    webpack.prod.config.js
+
+  </code></pre>
+
+  <h4>Source Directory</h4>
+  <p>
+    All development files are kept in the <code>&nbsp;src&nbsp;</code> directory. The application is subdivided into utility, application, asset directories as necessary.
+  </p>
+  <p>
+    All JavaScript in the application need to have dependencies set up that point to a single point of entry. By default this is named <code>&nbsp;index.js&nbsp;</code> and it serves as the launching point for all the JavaScript in the application.
+  </p>
+  <p>
+    <code>&nbsp;template.html&nbsp;</code> contains the html code and links to external sources. <code>&nbsp;vendor.js&nbsp;</code> is a separate JavaScript file that holds JavaScript librareis used in the applicaiton.
+  </p>
+
+  <h4>Distribution Directory</h4>
+  <p>
+    The applicaction is built by Webpack. The files intended for ditribution / production are put into the <code>&nbsp;dist&nbsp;</code> directory. The <code>&nbsp;dist&nbsp;</code> directory and its contents are created each time the application is
+    built.
+  </p>
+  <p>
+    The <code>&nbsp;dist&nbsp;</code> directory should be included in <code>&nbsp;.gitignore&nbsp;</code>.
+  </p>
+  <br />
+
+  <h3>Installing Webpack</h3>
+  <p><em>Webpack_3</em></p>
+  <hr />
+  <p><code>npm init</code></p>
+  <p><code>npm install --save-dev webpack webpack-cli</code></p>
+  <p>Add start script to <code>package.json</code></p>
+  <pre><code>
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  </code></pre>
+
+  <p>
+    Webpack, by default, will start from <code>/src/index.js</code>.
+  </p>
+  <p>
+    When run, Webpack creates <code>/dist/main.js</code>, a minified, bundled version of all the JavaScript loaded by <code>/src/index.js</code>.
+  </p>
+  <p>
+    The only <code>&lt;script&gt;</code> tag <code>index.html</code> requires is...
+  </p>
+  <p>
+    <code>&lt;script src="./dist/main.js"&gt;&lt;/script&gt;</code>.
+  </p>
+  <p>
+    <em>SEE LESSON 6 ON CACHE BUSTING TO ALLOW WEBPACK TO BUILD AND INJECT THE SCRIPT TAG AUTOMATICALLY</em>
+  </p>
+  <p>
+    Update <code>.gitignore</code> to include the <code>/dist</code> directory since it is creates every time the application is built.
+  </p>
+  <pre><code>
+    /node_modules
+    /dist
+  </code></pre>
+
+</article>
+
+<br>
+<br>
+  <hr>
+  <h2>III: Imports, Exports and Webpack Modules</h2>
+  <h3>Imports, Exports and Webpack Modules</h3>
+  <p><em>Webpack_4</em> </p>
+  <hr/>
+
+<article>
+  <p><code>index.js</code> is the delivery point of all the JavaScript in the project. </p>
+
+  <p>All files and file dependencies need to by imported into <code>index.js</code>. Lowest level dependencies are exported to each file that requires them.</p>
+
+  <pre><code class=" JavaScript language- JavaScript">export class AlertService {
+  ...
+}
+</code></pre>
+
+  <p><br />
+    or collectively if all code is in a single function...</p>
+
+  <pre><code class="JavaScript language-JavaScript">export default function(){
+    ...
+}
+</code></pre>
+
+  <p>Those dependencies are imported by the requisite files...</p>
+
+  <pre><code class="JavaScript language-JavaScript">import { AlertService } from "./app/alert.service";
+</code></pre>
+
+  <p></p>
+
+  <p>Instances of classes will also need to be called in <code>index.js</code> as well as importing the class itself.</p>
+
+  <pre><code class="JavaScript language-JavaScript">const alertService = new AlertService();
+</code></pre>
+
+  <p><br />
+    The only <code>&lt;script&gt;</code> tag <code>index.html</code> requires is...</p>
+
+  <p><code>&lt;script src="./dist/main.js"&gt;&lt;/script&gt;</code>.</p>
+</article>
+
+<h2 id="lesson4configuringwebpack">Lesson 4: Configuring Webpack</h2>
+
+<h3 id="configuringwebpack">Configuring Webpack</h3>
+
+<p><em>Commit 4 >> Webpack_4</em> </p>
+
+<hr />
+
+<p>In the project directory...</p>
+
+<p><code>webpack.config.js</code></p>
+
+<p>The name can be changed.</p>
+
+<h4 id="webpackconfig">Webpack.Config</h4>
+
+<p>The configuration file needs to export the functionality of Webpack. </p>
+
+<ul>
+  <li>entry: where Webpack looks for the JavaScript code to bundle.</li>
+
+  <li>output: where and what files Webpack will create the code for distribution.
+
+
+    <ul>
+      <li>filename: The bundled JavaScript file for distribution containing <strong><em>webpack modules</em></strong> created from the multiple development files.</li>
+
+      <li>path: The path to the new directory for distribution.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The Node module <code>path</code> needs to be required so the shorthand for the project directory can be used
+  (<code>__dirname</code>).</p>
+
+<p>Note that <code>main.js</code> and the distribution directory, <code>dist</code>, can be renamed. The default titles are shown below.</p>
+
+<pre><code class="JavaScript language-JavaScript">// webpack.config.js
+
+const path = require("path");
+
+module.exports = {
+  entry: ".src/index.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist")
+  },
+  ...
+}
+</code></pre>
+
+<p>In <code>package.json</code>...</p>
+
+<pre><code class="JavaScript language-JavaScript">"scripts": {
+  "start": "webpack --config webpack.config.js"
+},
+</code></pre>
+
+<p>Additionally, in webpack.config.js, the mode can be set to development or production.</p>
+
+<ul>
+  <li>devtool: 'none' ... is a means of avoiding the use of <code>eval()</code> in the final JavaScript bundle, making the code easier to read.</li>
+</ul>
+
+<pre><code class="JavaScript language-JavaScript">mode: "development",
+devtool: "none",
+...
+</code></pre>
+
+<h2 id="lesson5loaderscsssass">Lesson 5: Loaders, CSS &amp; SASS</h2>
+
+<p><em>Commit 5 >> Webpack_5</em> </p>
+
+<hr />
+
+<p>Loaders allow Webpack to handle files other than JavaScript files. They are packages that are installed and configure how Webpack processes and 'loads' those files.</p>
+
+<p>This means that the html pages will have no <code>&lt;link&gt;</code> tags. All CSS is loaded to the page via Webpack.</p>
+
+<h2 id="cssloaders">CSS Loaders</h2>
+
+<p>Add a new element to webpack.config.js.</p>
+
+<ul>
+  <li>module: holds all the rules for Loaders
+
+
+    <ul>
+      <li>rules: each loader is configured</li>
+
+      <li>test: RegEx which defines upon which types of files the loaders should act on.</li>
+
+      <li>use: which loaders to use. NOTE: the loaders will 'load' in reverse order. So if any are dependent on any others the lower dependecies are listed last.</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>
+  module:{
+    rules[
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+
+</code></pre>
+
+<p><code>npm install --save-dev style-loader css-loader</code></p>
+
+<p><code>/\.css$/</code> = all files that end in .css </p>
+
+<p><code>css-loader</code> = Converts css into JavaScript and bundles with the other JavaScript files. </p>
+
+<p><code>style-loader</code> = Takes JavaScript converted css and injects it into a <code>&lt;style&gt;</code> tag in the DOM. Dependent on <code>css-loader</code>.</p>
+
+<p>Once the loaders are in place, import all css stylesheets into index.js</p>
+
+<pre><code class="JavaScript language-JavaScript">import "./main.css";
+</code></pre>
+
+<p><em>SEE LESSON 10 REGARDING THE PROBLEMS WITH INJECTING CSS VIA JAVASCRIPT AND THE PLUGIN USED TO RECTIFY .</em></p>
+
+<h3 id="sassloaders">SASS Loaders</h3>
+
+<p><em>Commit 6 >> Webpack_6</em></p>
+
+<hr />
+
+<p><code>npm install --save-dev sass-loader node-sass webpack</code> </p>
+
+<p>The conversion of Scss to css must happen first so note the order of placement of the loaders.</p>
+
+<pre><code class="JavaScript language-JavaScript">module: {
+  rules: [
+    test: /\.scss$/,
+    use: [
+      "style-loader", // 3. Inject css to DOM
+      "css-loader",   // 2. Convert css to JS
+      "sass-loader"   // 1. Convert Sass to css
+    ]
+  ]
+}
+</code></pre>
+
+<h2 id="lesson6cachebustingplugins">Lesson 6: Cache Busting &amp; Plugins</h2>
+
+<p><em>Commit 7 >> Webpack_7</em> </p>
+
+<hr />
+
+<h3 id="cachebusting">Cache Busting</h3>
+
+<p>Set up Webpack to renew a hash identifier concatenated to the name of the bundled JS file. This prevents a browser loading an old cached version of the page by ensuring the name is unique.</p>
+
+<p>The HtmlWebpackPlugin will generate an HTML page and create a <code>&lt;script&gt;</code> tag that includes the most recent hash identifier with the JavaScript bundle file name.</p>
+
+<p>Point the plugin to a template inside the <code>/src</code> directory.</p>
+
+<p><code>npm install --save-dev html-webpack-plugin</code></p>
+
+<pre><code class="JavaScript language-JavaScript">// webpack.config.js
+
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+...
+
+output: {
+  filename: "main.[contentHash].js",
+  path: path.resolve(__dirname, "dist")
+},
+plugins: [
+  new HtmlWebpackPlugin({
+    template: "./src/template.html"
+  })
+],
+</code></pre>
+
+<p><strong>Plugins</strong> supply functionality to Webpack processes.</p>
+
+<h2 id="lesson7splittingdevproduction">Lesson 7: Splitting Dev &amp; Production</h2>
+
+<p><em>Commit 8 >> Webpack_8</em> </p>
+
+<hr />
+
+<h4 id="webpackmergeplugin">Webpack Merge Plugin</h4>
+
+<p>It is unnecessary to take the time and resources to build an applicaiton for production and deployment when working in development mode. So it is useful to have 3 different webpack.config.js files. One for production, one for development and one
+  for common code between the 2.</p>
+
+<p>To do so it is necessary to use a plugin called <code>webpack-merge</code></p>
+
+<p>The common configuration doesn't need to contain the merge plugin since it will be merged into the dev and prod files.</p>
+
+<pre><code class="JavaScript language-JavaScript">// example webpack.common.js
+
+const path = require("path");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: "./src/index.js",
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/template.html"
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader", //3. Inject styles into DOM
+          "css-loader", //2. Turns css into commonjs
+          "sass-loader" //1. Turns sass into css
+        ]
+      }
+    ]
+  }
+};
+</code></pre>
+
+<p><strong><em>The Development Configuration</em></strong></p>
+
+<p>The common file and the merge plugin must be required. The export will then be a function of the merge plugin combining the common config file and dev config file.</p>
+
+<p>Unique to the development file is mode and the lack of need for a content hash in the distribution html file name.</p>
+
+<pre><code class="JavaScript language-JavaScript">// example webpack.dev.js
+
+const path = require("path");
+const common = require("./webpack.common");
+const merge = require("webpack-merge");
+
+module.exports = merge(common, {
+  mode: "development",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist")
+  }
+});
+</code></pre>
+
+<h4 id="webpackdevserver">Webpack Dev Server</h4>
+
+<p>Create separate scripts for development and production modes in <code>package.json</code>.</p>
+
+<p>Also install <strong><em>Webpack Dev Server</em></strong> to open the development mode automatically in a browser and running on memory only. It opens and shows changes very quickly but does not take the time or resources to build new files. The
+  <code>dist</code> directory is only created in memory.</p>
+
+<p><code>npm install --save-dev webpack-dev-server</code></p>
+
+<p>Once installed it can be included directly into the start script. Include the optional <code>--open</code> to open the applicaiton in the browser.</p>
+
+<p><strong><em>npm Scripts</em></strong></p>
+
+<pre><code class="JavaScript language-JavaScript">"scripts":{
+  "start": "webpack-dev-server --config webpack.dev.js --open",
+  "build": "webpack --config webpack.prod.js"
+}
+</code></pre>
+
+<p><code>$ npm start</code></p>
+
+<p><code>$ npm run build</code></p>
+
+<h2 id="lesson8htmlloaderfileloader">Lesson 8: HTML Loader &amp; File Loader</h2>
+
+<p><strong><em>Handling images and other assets for the production build.</em></strong></p>
+
+<p><em>Commit 9 >> Webpack_9</em> </p>
+
+<hr />
+
+<p>Any assets (images, etc.) need to be placed inside the <code>src</code> folder. Those files can then be copied and given cache busting hashes (as with the html files) in the <code>dist</code> folder during a production build.</p>
+
+<h4 id="htmlloader">HTML Loader</h4>
+
+<p>When an <code>src=image.jpg</code> or something similar is encountered the HTML Loader will tell webpack to require the file in the <code>dist</code> folder during a production build.</p>
+
+<p><code>npm install --save-dev html-loader</code></p>
+
+<p>Add a rule in the <code>webpack.common</code> config file.</p>
+
+<pre><code class="javascript language-javascript">module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: [
+        "style-loader", //3. Inject styles into DOM
+        "css-loader", //2. Turns css into commonjs
+        "sass-loader" //1. Turns sass into css
+      ]
+    },
+    {
+      test: /\.html$/,
+      use: ["html-loader"]
+    },
+    ...
+  }
+</code></pre>
+
+<h4 id="fileloader">File Loader</h4>
+
+<p>In order to handle image file types, file loader needs to be installed and a new rule added to <code>webpack.common</code> config file.</p>
+
+<p><code>npm install --save-dev file-loader</code></p>
+
+<pre><code class="javascript language-javascript">module: {
+  rules: [
+    ...
+
+    {
+      test: /\.html$/,
+      use: ["html-loader"]
+    },
+    {
+      test: /\.(svg|png|jpg|gif)$/,
+      use: {
+        loader: "file-loader",
+        options: {
+          name: "[name].[hash].[ext]",
+          outputPath: "imgs"
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+
+<p>The <code>use:</code> parameter of the rule can be broken down into an object with the <code>loader:</code> as the name of the loader and <code>options:</code> as a set of specificaitons for the how the file is handled.</p>
+
+<p>In this case the format of the file name including the hash for cache busting and a folder to create to store the file in the production build.</p>
+
+<p><strong>Sum up:</strong> Images are attached to the <code>template.html</code> file in the <code>src</code> folder as normal. HTML Loader finds image files in all html files. File Loader takes those image files and puts them into production,
+  modifying the file name, file path and the html tag in <code>index.html</code>.</p>
+
+<hr />
+
+<h3 id="cleanwebpackplugin">Clean-Webpack Plugin</h3>
+
+<h5 id="removingoldfileswithcachebustinghasheswhennewfilesarecreated">Removing old files with cache busting hashes when new files are created.</h5>
+
+<p><code>npm install --save-dev clean-webpack-plugin</code></p>
+
+<p>The Development configuration doesn't need this. Running the Dev-server runs everything from memory and is always deleted.</p>
+
+<p>So the Production config file...</p>
+
+<pre><code class="javascript language-javascript">const path = require("path");
+const common = require("./webpack.common");
+const merge = require("webpack-merge");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+
+module.exports = merge(common, {
+  mode: "production",
+  output: {
+    filename: "main.[contentHash].js",
+    path: path.resolve(__dirname, "dist")
+  },
+  plugins: [new CleanWebpackPlugin()]
+});
+</code></pre>
+
+<h2 id="lesson9multipleentrypointsvendorjs">Lesson 9: Multiple Entrypoints &amp; Vendor.js</h2>
+
+<p><strong><em>Create multiple bundles for custom JS and vendor libraries allowing the production build to only update what is necessary.</em></strong></p>
+
+<p><em>Commit 10 >> Webpack_10</em> </p>
+
+<hr />
+
+<p>Create multiple entry points.</p>
+
+<pre><code class="JavaScript language-JavaScript">module.exports = {
+  entry: {
+    main: "./src/index.js",
+    vendor: "./src/vendor.js"
+  },
+  ...
+}
+</code></pre>
+
+<p>With multiple entry points there need to be multiple outputs. Or, in this case, a rule for naming the multiple outputs.</p>
+
+<p>In the Development configuration...</p>
+
+<pre><code class="JavaScript language-JavaScript">module.exports = merge(common, {
+  mode: "development",
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist")
+  }
+});
+</code></pre>
+
+<p>In the Production configuration...</p>
+
+<pre><code class="JavaScript language-JavaScript">module.exports = merge(common, {
+  mode: "production",
+  output: {
+    filename: "[name].[contentHash].bundle.js",
+    path: path.resolve(__dirname, "dist")
+  },
+  plugins: [new CleanWebpackPlugin()]
+});
+</code></pre>
+
+<p>The <code>dist</code> folder after a production build will now contain <code>main.[hash].bundle.js</code> and <code>vendor.[hash].bundle.js</code>. The <code>index.html</code> file is updated to include them.</p>
+
+<h2 id="lesson10extractcss">Lesson 10: Extract CSS</h2>
+
+<p><strong><em>Extract CSS in the production build so styling is loaded as a stylesheet</em></strong></p>
+
+<p><em>Commit 11 >> Webpack_11</em> </p>
+
+<hr />
+
+<p>All the CSS is being rendered through Javascript so the HTML loads before the styling. Extracting the CSS into a stylesheet for the produciton build allows the page to load without delay.</p>
+
+<p>This is unnecessary for the Development build since the effect is mainly cosmetic and would simply slow down the build.</p>
+
+<h4 id="minicssextractplugin">Mini CSS Extract Plugin</h4>
+
+<p><code>npm install --save-dev mini-css-extract-plugin</code></p>
+
+<p>Require plugin in the Production configuration...</p>
+
+<pre><code class="JavaScript language-JavaScript">  const CleanWebpackPlugin = require("clean-webpack-plugin");
+</code></pre>
+
+<p>Add the plugin to the the export and configure the CSS stylesheet name to be created in <code>dist</code>...</p>
+
+<pre><code class="JavaScript language-JavaScript">plugins: [
+  new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
+  new CleanWebpackPlugin()
+],
+</code></pre>
+
+<p>This plugin comes with a loader that will replace the style-loader.
+  So the <code>style-loader</code> rule in the Common configuration file can be moved to Produciton and changed...</p>
+
+<pre><code class="JavaScript language-JavaScript">module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: [
+        MiniCssExtractPlugin.loader, //3. Extract css into files
+        "css-loader", //2. Turns css into commonjs
+        "sass-loader" //1. Turns sass into css
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<p>The original loader rules including the <code>style-loader</code> can be kept for the Development configuration....</p>
+
+<pre><code class="JavaScript language-JavaScript">module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: [
+        "style-loader", //3. Inject styles into DOM
+        "css-loader", //2. Turns css into commonjs
+        "sass-loader" //1. Turns sass into css
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<p><strong><em>Sum up:</em></strong> Mini CSS Extract Plugin uses its built in loader to to extract all CSS from the JavaScript file. It creates a new stylesheet file with cache busting hash and modifies <code>index.html</code> to include the
+  stylesheet.</p>
+
+<h2 id="minifyhtmlcssjs">Minify HTML / CSS / JS</h2>
+
+<p>Minification in Production build only.</p>
+
+<h4 id="optimizecssassetsweppackplugin">Optimize CSS Assets Weppack Plugin</h4>
+
+<p><code>npm install --save-dev optimize-css-assets-webpack-plugin</code></p>
+
+<pre><code class="JavaScript language-JavaScript">  const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+</code></pre>
+
+<p>Minification occurs through a new property (optimization) in the export module.</p>
+
+<pre><code class="JavaScript language-JavaScript">optimization: {
+  minimizer: [new OptimizeCssAssetsPlugin()]
+},
+...
+</code></pre>
+
+<h4 id="terserwebpackplugin">Terser Webpack Plugin</h4>
+
+<p>Optimization: minifier is, by default, set to use a built in JavaScript minifier called Terser Webpack Plugin. By explicitly defining the optimization: minifier property and using a CSS minifier, that plugin is overridden. So it needs to be
+  explicitly added back. It is already installed with Webpack.</p>
+
+<pre><code class="JavaScript language-JavaScript">  const TerserPlugin = require("terser-webpack-plugin");
+</code></pre>
+
+<h4 id="htmlwebpackplugin">HTML Webpack Plugin</h4>
+
+<p>This plugin can be moved to the Production configuration and minify options added.</p>
+
+<pre><code class="JavaScript language-JavaScript">optimization: {
+  minimizer: [
+    new OptimizeCssAssetsPlugin(),
+    new TerserPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/template.html",
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true
+      }
+    })
+  ]
+},
+}
+
+<br/></p>
+<% include ./partials/footer.ejs %>

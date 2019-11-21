@@ -1,0 +1,108 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <div class="indent">
+    <p>
+      <i>Use the <code>&nbspman&nbsp</code> command to see a description and a list of all available options.</i>
+    </p>
+    <p>
+      <i>Set aliases for commands either temporarily in the terminal or permanantly in the <code>.bash_alias</code> dotfile.</i>
+    </p>
+    <br>
+    <div class="indent">
+      <i>
+        <table>
+          <tr>
+            <td class='col175'>alias</td>
+            <td class=''># lists all available aliases</td>
+          </tr>
+          <tr>
+            <td class='col1'>alias ls="ls -al"</td>
+            <td class='col2'># 'ls' will now show hidden files in long format</td>
+          </tr>
+        </table>
+      </i>
+    </div>
+
+    <br>
+    <p>
+      <em>To add:</em>
+      <ul class="no-dot">
+        <li>which command <code>&nbspwhich bash&nbsp</code> </li>
+        <li>tab autocomplete</li>
+      </ul>
+    </p>
+
+  </div>
+</section>
+
+<section>
+  <!-- <h2>Section Title</h2> -->
+  <hr>
+  <article>
+    <h3>Common Commands</h3>
+    <div class="indent">
+      <table>
+        <tr>
+          <td class="col175">ls</td>
+          <td class=""> <i># lists contents of current directory</i> </td>
+        </tr>
+        <tr>
+          <td class="">ls /usr</td>
+          <td class=""> <i># lists contents of /usr directory</i> </td>
+        </tr>
+        <tr>
+          <td class="">ls ~/usr</td>
+          <td class=""> <i># lists contents of /home and /usr directories</i> </td>
+        </tr>
+        <tr>
+          <td class="">ls -a</td>
+          <td class=""> <i># include hidden files </i> </td>
+        </tr>
+        <tr>
+          <td class="">less <i>'filename'</i></td>
+          <td class="">
+            <i># opens a file in the terminal</i> <br>
+            <i># useful for reading config files</i><br>
+            <i># will show one full screen of text at a time</i><br>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class=""></td>
+          <td class="">
+            <i>Page up / Page down</i><br>
+            <i>Up / Down arrows</i><br>
+            <i>G &nbsp;=&nbsp; move to end</i><br>
+            <i>1G or g &nbsp;=&nbsp; move to beginning</i><br>
+            <i>q &nbsp;=&nbsp; quit</i><br>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class="">cat</td>
+          <td class=""> <i># </i> </td>
+        </tr>
+        <tr>
+          <td class="">cp</td>
+          <td class=""> <i># </i> </td>
+        </tr>
+        <tr>
+          <td class="">mv</td>
+          <td class=""> <i># </i> </td>
+        </tr>
+        <tr>
+          <td class="">find</td>
+          <td class=""> <i># </i> </td>
+        </tr>
+        <tr>
+          <td class="">grep</td>
+          <td class=""> <i># </i> </td>
+        </tr>
+
+      </table>
+    </div>
+  </article>
+  <hr>
+</section>
+<% include ./partials/footer.ejs %>

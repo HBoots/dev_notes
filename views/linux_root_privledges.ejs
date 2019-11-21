@@ -1,0 +1,69 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+
+<section>
+  <h2>Obtaining Root Privleges</h2>
+  <article>
+    <hr>
+    <h3>Use sudo to Execute Commands as Root &nbsp; (Preferred)</h3>
+    <div class="indent">
+      <p>
+        Does not spawn a new shell. Commands are done individually. Sudo access must be set up for each user by root.
+      </p>
+      <p>
+        <code>&nbsp$ sudo command_to_execute&nbsp</code>
+      </p>
+      <p>
+        The password requested is the user’s password NOT the root password.
+      </p>
+      <br>
+    </div>
+    <br>
+  </article>
+  <hr>
+
+  <article>
+    <h3>Use ‘su’ to Become Root</h3>
+    <div class="indent">
+      <p>
+        When making a lot of root changes...
+      </p>
+      <p>
+        Spawn a new shell as root user.
+      </p>
+      <p>
+        <code>&nbsp$ su&nbsp</code> # substitute user
+      </p>
+      <p>
+        <code>&nbsp$ root password prompt&nbsp</code>
+      </p>
+      <p>
+        When finished…
+      </p>
+      <p>
+        <code>&nbsp$ exit&nbsp</code>
+      </p>
+    </div>
+    <br>
+  </article>
+  <hr>
+
+  <article>
+    <h3>Log in as Root &nbsp; (Not recommended)</h3>
+    <div class="indent">
+      <p>
+        This may be disabled as is recommeded when creating a server on Ubuntu. It is not recommended regardless since it it too easy to begin perfomring routine tasks while logged in as root and accidentally damage something.
+      </p>
+      <p>
+        Enter <code>&nbsproot&nbsp</code> as the user name then enter root password. If logging in thorugh SSH...
+      </p>
+      <p>
+        <code>&nbsp$ ssh root@server_domain_or_IP&nbsp</code>
+      </p>
+    </div>
+    <br>
+  </article>
+  <hr>
+</section>
+
+<% include ./partials/footer.ejs %>

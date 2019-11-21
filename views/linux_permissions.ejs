@@ -1,0 +1,265 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <article>
+    <div class="indent">
+      <table>
+        <tr>
+          <td class='col100'>chmod</td>
+          <td class="col2"> <i># change a file's permission mode</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>chown</td>
+          <td class="col2"> <i># change a file's owner</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>chgrp</td>
+          <td class="col2"> <i># change a file's group ownership</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>umask</td>
+          <td class="col2"> <i># set default file permissions</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>id</td>
+          <td class="col2"> <i># display user's identity</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>passwd</td>
+          <td class="col2"> <i># change a user's password</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>su</td>
+          <td class="col2"> <i># run shell as another user</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>sudo</td>
+          <td class="col2"> <i># run a command as another user</i> </td>
+        </tr>
+      </table>
+    </div>
+  </article>
+  <hr>
+  <article>
+    <h3>Permission Attributes</h3>
+    <div class="indent">
+      <table>
+        <tr>
+          <td class='col100'>-</td>
+          <td class="col2">
+            <i># file (if first character)</i><br>
+            <i># no permission (anywhere else)</i><br>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class='col100'>d</td>
+          <td class="col2"> <i># directory</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>l</td>
+          <td class="col2"> <i># symbolic link</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>c</td>
+          <td class="col2">
+            <i># character special file</i><br>
+            <i># a device that handles data as a stream of bytes</i><br>
+            <i># modem, terminal</i><br>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class='col100'>b</td>
+          <td class="col2">
+            <i># block special file</i><br>
+            <i># a device that handles data in blocks</i><br>
+            <i># HDD, CDROM</i><br>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class='col100'>r</td>
+          <td class="col2"> <i># read access</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>w</td>
+          <td class="col2"> <i># write access</i> </td>
+        </tr>
+        <tr>
+          <td class='col100'>x</td>
+          <td class="col2"> <i># execute access</i> </td>
+        </tr>
+      </table>
+      <br>
+      <p>
+        <i>Sample attributes:</i> &nbsp;&nbsp;- | rwx | rw- | r--
+      </p>
+      <br>
+      <table class="center">
+        <tr>
+          <td>( - )</td>
+          <td>( rwx )</td>
+          <td>( rw- )</td>
+          <td>( r-- )</td>
+        </tr>
+        <tr>
+          <td>(file or dir)</td>
+          <td>(owner permissions)</td>
+          <td>(group permissions)</td>
+          <td>(world permissions)</td>
+        </tr>
+      </table>
+
+    </div>
+  </article>
+  <hr>
+  <article>
+    <h3>chmod - Changing File Mode (Octal Codes)</h3>
+    <div class="indent">
+      <table>
+        <tr>
+          <td class='col100'>0</td>
+          <td class="col2">- - -</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;no permissions</td>
+        </tr>
+        <tr>
+          <td class='col100'>1</td>
+          <td class="col2">- - x</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;execute only</td>
+        </tr>
+        <tr>
+          <td class='col100'>2</td>
+          <td class="col2">- w -</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;write only</td>
+        </tr>
+        <tr>
+          <td class='col100'>3</td>
+          <td class="col2">- w x</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;write & execute only</td>
+        </tr>
+        <tr>
+          <td class='col100'>4</td>
+          <td class="col2">r - -</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;read only</td>
+        </tr>
+        <tr>
+          <td class='col100'>5</td>
+          <td class="col2">r - x</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;read & execute only</td>
+        </tr>
+        <tr>
+          <td class='col100'>6</td>
+          <td class="col2">r w -</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;read & write only</td>
+        </tr>
+        <tr>
+          <td class='col100'>7</td>
+          <td class="col2">r w x</td>
+          <td></td>
+          <td class="col3">&nbsp;&nbsp;all permissions</td>
+        </tr>
+      </table>
+      <br>
+      <p>
+        Using 3 numbers the attributes for a file can be set quickly.
+      </p>
+      <p>
+        <code>&nbsp;chmod&nbsp;</code> will alter all attributes. It will remove old permissions and replace them.
+      </p>
+      <p>
+        Be sure to know if old permissions should or should not be altered.
+      </p>
+      <br>
+      <h5>
+        Common mode commands
+      </h5>
+      <table>
+        <tr>
+          <td class='col300'> <code>&nbspchmod 700 <i>'filename.ext'</i>&nbsp</code>&nbsp;&nbsp;&nbsp; </td>
+          <td> Only owner can access or change file </td>
+        </tr>
+        <tr>
+          <td class=''> <code>&nbspchmod 755 <i>'filename.ext'</i>&nbsp</code>&nbsp;&nbsp;&nbsp; </td>
+          <td> Owner can read, write and execute. Everyone else can read and execute. </td>
+        </tr>
+      </table>
+      <br>
+    </div>
+  </article>
+  <hr>
+  <article>
+    <h3>chmod - Changing File Mode (Symbolic Notation)</h3>
+    <div class="indent">
+      <table>
+        <tr>
+          <td class='col100'>u</td>
+          <td class="col2">User. The file or directory owner.</td>
+        </tr>
+        <tr>
+          <td class='col100'>g</td>
+          <td class="col2">Group Owner.</td>
+        </tr>
+        <tr>
+          <td class='col100'>o</td>
+          <td class="col2">Others. Everyone else.</td>
+        </tr>
+        <tr>
+          <td class='col100'>a</td>
+          <td class="col2">All. User, Group, and Others.</td>
+        </tr>
+        <tr>
+          <td class='col100'>+</td>
+          <td class="col2">Add the following permissions.</td>
+        </tr>
+        <tr>
+          <td class='col100'>-</td>
+          <td class="col2">Remove the following permissions.</td>
+        </tr>
+        <tr>
+          <td class='col100'>=</td>
+          <td class="col2">Overwrite existing permissions with the following.</td>
+        </tr>
+      </table>
+      <br>
+      <p>
+        If no character is given, a (All) is assumed
+      </p>
+      <h5>
+        Common symbol commands
+      </h5>
+      <table>
+        <tr>
+          <td class='col325'> <code>&nbspchmod u+x <i>'filename.ext'</i>&nbsp</code>&nbsp;&nbsp;&nbsp; </td>
+          <td>Add execute permission for the owner.</td>
+        </tr>
+        <tr>
+          <td class=''> <code>&nbspchmod u-x <i>'filename.ext'</i>&nbsp</code>&nbsp;&nbsp;&nbsp; </td>
+          <td>Remove execute permission for the owner.</td>
+        </tr>
+        <tr>
+          <td class=''> <code>&nbspchmod +x <i>'filename.ext'</i>&nbsp</code>&nbsp;&nbsp;&nbsp; </td>
+          <td>Add execute permission for everybody.</td>
+        </tr>
+        <tr>
+          <td class=''> <code>&nbspchmod o-rw <i>'filename.ext'</i>&nbsp</code>&nbsp;&nbsp;&nbsp; </td>
+          <td>Remove read and write permissions from anyone besides owner and group.</td>
+        </tr>
+        <tr>
+          <td class=''> <code>&nbspchmod go=rw <i>'filename.ext'</i>&nbsp</code>&nbsp;&nbsp;&nbsp; </td>
+          <td>Set the group owner and anyone besides the owner to have read and write permissions. If either the group owner or others previously had execute permissions, remove them.</td>
+        </tr>
+      </table>
+      <br>
+    </div>
+  </article>
+  <hr>
+</section>
+<% include ./partials/footer.ejs %>
