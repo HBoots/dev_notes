@@ -1,0 +1,46 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+      <section>
+        <!-- <h2>Obtaining Root Privleges</h2> -->
+        <article>
+          <h3>Installation</h3>
+          <div class="indent">
+            <p>
+              Install NodeSouce PPA.  Navigate to home directory and retieve installation script.
+            </p>
+            <p>
+              <code>&nbsp$ curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh&nbsp</code>
+            </p>
+            <br>
+            <p>
+              Run the installation script.
+            </p>
+            <p>
+              <code>&nbsp $ sudo bash nodesource_setup.sh &nbsp</code>
+            </p>
+            <br>
+            <p>
+              Install Node.
+            </p>
+            <p>
+              <code>&nbsp $ sudo apt install nodejs &nbsp</code>
+            </p>
+            <br>
+            <p>
+              Install build-essential package.  This is required for some npm packages.
+            </p>
+            <p>
+              <code>&nbsp $ sudo apt install build-essential &nbsp</code>
+            </p>
+            <br>
+
+          </div>
+        </article>
+        <hr>
+        <div class="center"> <a href="pm2">Next: PM2</a> </div>
+
+        
+
+      
+      </section>
+      <% include ./partials/footer.ejs %>

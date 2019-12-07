@@ -1,0 +1,55 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+            <section>
+              <article>
+                <h3>Set up</h3>
+                <div class="indent">
+                    <p>
+                        Open the Nginx application configuration file.
+                    </p>
+                    <p>
+                        <code>&nbsp $ sudo nano /etc/nginx/sites-available/example.com &nbsp</code>
+                    </p>
+                    <p>
+                        In the server block, change the 'location' to the code below.  Be sure to change the port number to whatever port your applications is running on.
+                    </p>
+                    <p>
+                        <pre><code>&nbsp 
+  server {
+  ...
+      location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+      }
+  ...
+  } 
+&nbsp</code> </pre>
+                    </p>
+                    <p>
+                        Adding additional location code blocks to the same server block is possible.  Include the application name after the forward slash and change the port number to the appropriate one.
+                    </p>
+                    <p>
+                        Save.  Exit.  Check for typos.
+                    </p>
+                    <p>
+                        <code>&nbsp $ sudo nginx -t &nbsp</code>
+                    </p>
+                    <p>
+                        Restart
+                    </p>
+                    <p>
+                        <code>&nbsp $ sudo systemctl restart nginx &nbsp</code>
+                    </p>
+
+                </div>
+                
+              </article>
+              <br>
+              <hr>     
+         
+            </section>
+            <% include ./partials/footer.ejs %>
