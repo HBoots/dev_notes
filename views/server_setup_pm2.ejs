@@ -1,0 +1,94 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+      
+ <section>
+    <h3>About</h3>
+    <article>
+        <p>
+            PM2 is a process manager for Node.js.  PM2 makes it possible for applications to run in the background as a service and can thus be automatically restarted if they crash or the server reboots.
+        </p>
+    </article>
+    <hr>
+    <h3>Installation</h3>
+    <article>
+        <p>
+            <code>&nbsp $ sudo npm install pm2@latest -g &nbsp</code>
+        </p>
+    </article>
+    <hr>
+    <h3>Setup</h3>
+    <article>
+        <p>
+            Start the application with PM2 through the application entry file.  The application is then added to PM2's process list.
+        </p>
+        <p>
+            <code>&nbsp $ pm2 start app.js &nbsp</code>
+        </p>
+        <p>
+        <pre>
+  [PM2] Spawning PM2 daemon with pm2_home=/home/sammy/.pm2
+  [PM2] PM2 Successfully daemonized
+  [PM2] Starting /home/sammy/hello.js in fork_mode (1 instance)
+  [PM2] Done.
+  ┌──────────┬────┬──────┬──────┬────────┬─────────┬────────┬─────┬─
+  │ App name │ id │ mode │ pid  │ status │ restart │ uptime │ cpu │ 
+  ├──────────┼────┼──────┼──────┼────────┼─────────┼────────┼─────┼─
+  │ app      │ 0  │ fork │ 1338 │ online │ 0       │ 0s     │ 0%  │ 
+  └──────────┴────┴──────┴──────┴────────┴─────────┴────────┴─────┴─
+  Use `pm2 show <id|name>` to get more details about an app </pre>
+        </p>
+        <br>
+        <p>
+            Generate a startup script to allow PM2 to start application on server startup.  
+        </p>
+        <p>
+            <code>&nbsp $ pm2 startup systemd &nbsp</code>
+        </p>
+        <p>
+            Copy, paste and run the given command to create and install the script.
+        </p>
+        <p>
+        <pre>
+  [PM2] Init System found: systemd
+  [PM2] To setup the Startup Script, 
+    copy/paste the following command:
+    sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2
+    startup systemd -u username --hp /home/username </pre>
+        </p>
+            <p>
+            Save the PM2 process list and envronment.
+        </p>
+        <p>
+            <code>&nbsp $ pm2 save &nbsp</code>
+        </p>
+    </article>
+    <hr>
+    <h3>Starting the Service</h3>
+    <article>
+        <p>
+            <code>&nbsp $ sudo systemctl start pm2-username &nbsp</code>
+        </p>
+    </article>
+    <hr>
+    <h3>Other Commands</h3>
+    <article>
+        <p>
+            <code>&nbsp $ sudo systemctl status pm2-username &nbsp</code>
+        </p>
+        <p>
+            <code>&nbsp $ sudo pm2 stop app_name_or_id&nbsp</code>
+        </p>
+        <p>
+            <code>&nbsp $ sudo pm2 restart app_name_or_id &nbsp</code>
+        </p>
+            <p>
+            List all applications managed by PM2
+        </p>
+        <p>
+            <code>&nbsp $ pm2 list &nbsp</code>
+        </p>
+    </article>
+    <hr>
+    <div class="center"> <a href="server_setup_nginx_proxy">Next: Nginx as Reverse Proxy</a> </div>
+</section>
+<% include ./partials/footer.ejs %>

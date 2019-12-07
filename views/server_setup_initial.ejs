@@ -1,0 +1,125 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <h3>Log in as Root</h3>
+  <article>
+        <p>
+          Get the server IP address from the Digital Ocean account.  From local machine, log in as root.
+        </p>
+        <p>
+          <code>&nbsp$ ssh root@server_IP_address&nbsp</code>
+        </p>
+        <ul>
+         <li>Accept authenticity warning</li>
+         <li>Enter root password</li>
+         <li>If the root password is forgotten or disabled, log in to Digital Ocean account and reset root password.  This will shut down the droplet and send a new password via email.  The password will then have to be immediately changed.</li>
+        </ul>
+      </article>
+      <hr>
+     
+        <h3>Create a New User</h3>
+        <article>
+        <p>
+         While in root create a superuser account to routinely access the server.  Create a new user and add the user to sudo.
+        </p>
+        <p>
+          <code>&nbsp$ adduser username&nbsp</code>
+        </p>
+        <ul>
+          <li>Enter a user password</li>
+          <li>The rest of the questions are optional.  Hit enter for each to skip them.</li>
+        </ul>
+        <p>
+          <code>&nbsp$ usermod -aG sudo username&nbsp</code>
+        </p>
+      </article>
+      
+      <hr>
+     
+        <h3>Set up a Firewall</h3>
+        <article>
+        <p>
+          Before logging out of root, set up the basic ufw firewall to block all incoming requests except SSH.  OpenSSH is the application used to set up the firewall.
+        </p>
+        <p>
+          Ubuntu has ufw installed by default.  But if, for some reason, it is missing...
+        </p>
+        <p>
+          <code>&nbsp # apt install ufw &nbsp</code>
+        </p>
+        <p>
+          To view all available applications working with ufw ...
+        </p>
+        <p>
+          <code>&nbsp # ufw app list &nbsp</code>
+        </p>
+        <p>
+          <pre>
+  >> Available application:
+      OpenSSH</pre>
+        </p>
+        <br>
+        <p>
+          Allow SSH connections through OpenSSH.  Enable the firewall, then check the firewall's status to be sure it's up.  If the result is only 'status: active', then be sure to allow OpenSSH to allow remote login via SSH.
+        </p>
+        <p>
+          <code>&nbsp# ufw allow OpenSSH&nbsp</code>
+        </p>
+        <p>
+          <code>&nbsp# ufw enable&nbsp</code>
+        </p>
+        <p>
+          <code>&nbsp# ufw status&nbsp</code>
+        </p>
+        <pre>
+  >> Status: active
+              
+  To                         Action      From
+  --                         ------      ----
+  OpenSSH                    ALLOW       Anywhere
+  OpenSSH (v6)               ALLOW       Anywhere (v6)</pre>
+        <p>
+          'active' means all connections are blocked except those that are explicitly allowed.
+        </p>
+        
+        <br>
+        <p>
+          <a href="linux_firewall">Common UFW Allowances</a>
+        </p>
+        </article>
+      
+      <hr>
+     
+        <!-- <h3>Enable External Access for Alt User</h3>
+        <article>
+        <p>
+          Using password authentication (if the Root Account still uses it) ...
+        </p>
+        <p>
+          <code>&nbsp$ ssh username@server_IP_address&nbsp</code>
+        </p>
+        <h5>
+          Using SSH key authentication ...
+        </h5>
+        <p>
+          Add a copy of local public key to new user's <code>&nbsp~/.ssh/authorized_keys&nbsp</code>
+        </p>
+        <p>
+          Use the rsync command to transfer the entire directory structure from root to the new user. BE SURE TO INCLUDE the space after .ssh <code>&nbsp~/.ssh /home...&nbsp</code>. If the <code>&nbsp/&nbsp</code> is set directly after <code>&nbsp~/.ssh&nbsp</code>
+          the directory structure will not be transfered correctly and SSH will not be able to find it.
+        </p>
+        <p>
+          <code>&nbsp# rsync --archive --chown=username:username ~/.ssh /home/username&nbsp</code>
+        </p>
+        <p>
+          Log into alt user account.
+        </p>
+        <p>
+          <code>&nbsp$ ssh username@server_IP_address&nbsp</code>
+        </p>
+        </article>
+      <hr> -->
+    
+ </section>
+ <div class="center"> <a href="server_setup_ssh">Next: SSH</a> </div>
+<% include ./partials/footer.ejs %>

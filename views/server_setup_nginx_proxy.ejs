@@ -14,7 +14,7 @@
                         In the server block, change the 'location' to the code below.  Be sure to change the port number to whatever port your applications is running on.
                     </p>
                     <p>
-                        <pre><code>&nbsp 
+                        <pre>
   server {
   ...
       location / {
@@ -26,8 +26,7 @@
           proxy_cache_bypass $http_upgrade;
       }
   ...
-  } 
-&nbsp</code> </pre>
+  }</pre>
                     </p>
                     <p>
                         Adding additional location code blocks to the same server block is possible.  Include the application name after the forward slash and change the port number to the appropriate one.

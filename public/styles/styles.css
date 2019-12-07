@@ -1,198 +1,211 @@
-*{
-  box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
-html, body{
-  font-size: 16px;
-  font-family: Calibri;
-  padding: 0px;
-  margin: 0px;
+html,
+body {
+    font-size: 16px;
+    font-family: Calibri;
+    padding: 0px;
+    margin: 0px;
 }
 
-article{
-  padding-left: 20px;
+article {
+    padding-left: 40px;
 }
 
-.wrapper{
-  margin: 70px;
-  margin-top: 40px;
+.wrapper {
+    margin: 70px;
+    margin-top: 40px;
 }
 
-.main{
-  max-width: 700px;
-  margin: auto;
+.main {
+    max-width: 700px;
+    margin: auto;
 }
 
-.small-block{
-  max-width: 30%;
-  margin: auto;
+.small-block {
+    max-width: 30%;
+    margin: auto;
 }
 
 /* FOR PDF CONVERSION ****/
 
-.end{
-  page-break-after: always;
+.end {
+    page-break-after: always;
 }
 
-.start{
-  page-break-before: always;
+.start {
+    page-break-before: always;
 }
 
-.correct:hover{
-  background-color: #48D1CC;
+.correct:hover {
+    background-color: #48d1cc;
 }
-
 
 /************************/
 
-code{
-  background-color: #F7E1BA;
-  font-size: .95rem;
-  font-family: 'Courier New';
-  padding: 3px;
+pre,
+code {
+    background-color: rgb(230, 226, 222);
+    font-size: .95rem;
+    font-style: italic;
+    font-family: 'Courier New';
+    margin-left: 30px;
+    padding: 3px;
+}
+
+code {
+    background-color: #f7e1ba;
+    font-style: normal;
+    padding: 1px;
 }
 
 pre code {
-  display: block;
-  padding: 0;
+    display: block;
+    padding: 0;
 }
 
-h3{
-  font-style: italic;
-  color: #29476E;
+h3 {
+    font-style: italic;
+    padding-bottom: 10px;
 }
 
-h4{
-  font-style: italic;
-  text-decoration: underline;
+h4 {
+    font-style: italic;
+    text-decoration: underline;
 }
 
-p{
-  font-size: 1em;
-  font-style: normal;
-  font-weight: normal;
-  color: black;
-  /* text-indent: 15px; */
-  /* margin-top: 8px; */
-  /* margin-bottom: 8px; */
+p {
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    /* text-indent: 15px; */
+    /* margin-top: 8px; */
+    /* margin-bottom: 8px; */
 }
 
-hr{
-  margin-top: 30px;
-  margin-bottom: 30px;
+hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-ul.no-dot{
-  list-style: none;
+li {
+    padding-bottom: 5px;
 }
 
-.article-content{
-  padding-left: 20px;
+ul.no-dot {
+    list-style: none;
 }
 
-.highlight{
-  background-color: #eee;
-  padding: 25px;
-  padding-top: 1px;
+.article-content {
+    padding-left: 20px;
 }
 
-.center{
-  text-align: center
+.highlight {
+    background-color: #eee;
+    padding: 25px;
+    padding-top: 1px;
 }
 
-.indent{
-  padding-left: 20px;
+.center {
+    text-align: center;
 }
 
-.close{
-  padding: 0px;
-  margin: 5px;
+.indent {
+    padding-left: 20px;
 }
 
-.strip{
-  padding: 0px;
-  margin: 0px;
+.close {
+    padding: 0px;
+    margin: 5px;
 }
 
-.spacer10{
-  height: 10px;
+.strip {
+    padding: 0px;
+    margin: 0px;
 }
 
-.spacer20{
-  height: 20px;
+.spacer10 {
+    height: 10px;
 }
 
-.spacer50{
-  height: 50px;
+.spacer20 {
+    height: 20px;
 }
 
-
+.spacer50 {
+    height: 50px;
+}
 
 /*TABLE********************/
 
-th{
-  vertical-align: middle;
-  font-style: italic;
-  color: #29476E;
+th {
+    vertical-align: middle;
+    font-style: italic;
+    color: #29476e;
 }
 
-tr{
-  height: 40px;
+tr {
+    height: 40px;
 }
 
-td{
-  vertical-align: top;
+td {
+    vertical-align: top;
 }
 
-.grid, .grid th, .grid td{
-  border: 1px solid black;
-  border-collapse: collapse;
+.grid,
+.grid th,
+.grid td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
-.grid td{
-  /* padding: 5px; */
-  padding-left: 20px;
-  padding-right: 10px;
+.grid td {
+    /* padding: 5px; */
+    padding-left: 20px;
+    padding-right: 10px;
 }
 
-.col100{
-  width: 100px;
+.col100 {
+    width: 100px;
 }
 
-.col150{
-  width: 150px;
+.col150 {
+    width: 150px;
 }
 
-.col175{
-  width: 175px;
+.col175 {
+    width: 175px;
 }
 
-.col200{
-  width: 200px;
+.col200 {
+    width: 200px;
 }
 
-.col225{
-  width: 225px;
+.col225 {
+    width: 225px;
 }
 
-.col250{
-  width: 250px;
+.col250 {
+    width: 250px;
 }
 
-.col280{
-  width: 280px;
+.col280 {
+    width: 280px;
 }
 
-.col300{
-  width: 300px;
+.col300 {
+    width: 300px;
 }
 
-.col310{
-  width: 310px;
+.col310 {
+    width: 310px;
 }
 
-.col325{
-  width: 325px;
+.col325 {
+    width: 325px;
 }
 
 /****************************/

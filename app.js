@@ -56,23 +56,38 @@ app.get('/linux_root_privledges', function(req, res) {
     res.render('linux_root_privledges', { pageTitle: pageTitle });
 });
 
-app.get('/linux_server_setup', function(req, res) {
-    var pageTitle = 'Linux Server Setup';
-    res.render('linux_server_setup', { pageTitle: pageTitle });
+app.get('/server_setup_initial', function(req, res) {
+    var pageTitle = 'Ubuntu Server Setup';
+    res.render('server_setup_initial', { pageTitle: pageTitle });
 });
-app.get('/node_install', function(req, res) {
+app.get('/server_setup_ssh', function(req, res) {
+    var pageTitle = 'SSH';
+    res.render('server_setup_ssh', { pageTitle: pageTitle });
+});
+app.get('/server_setup_dns', function(req, res) {
+    var pageTitle = 'DNS';
+    res.render('server_setup_dns', { pageTitle: pageTitle });
+});
+app.get('/server_setup_nginx', function(req, res) {
+    var pageTitle = 'Nginx';
+    res.render('server_setup_nginx', { pageTitle: pageTitle });
+});
+app.get('/server_setup_https', function(req, res) {
+    var pageTitle = 'SSL & HTTPS';
+    res.render('server_setup_https', { pageTitle: pageTitle });
+});
+app.get('/server_setup_node', function(req, res) {
     var pageTitle = 'Install Node.js';
-    res.render('node_install', { pageTitle: pageTitle });
+    res.render('server_setup_node', { pageTitle: pageTitle });
 });
-app.get('/pm2', function(req, res) {
+app.get('/server_setup_pm2', function(req, res) {
     var pageTitle = 'PM2';
-    res.render('pm2', { pageTitle: pageTitle });
+    res.render('server_setup_pm2', { pageTitle: pageTitle });
 });
-app.get('/nginx_rev_proxy', function(req, res) {
+app.get('/server_setup_nginx_proxy', function(req, res) {
     var pageTitle = 'Nginx as a Reverse Proxy';
-    res.render('nginx_rev_proxy', { pageTitle: pageTitle });
+    res.render('server_setup_nginx_proxy', { pageTitle: pageTitle });
 });
-
 app.get('/linux_sudo', function(req, res) {
     var pageTitle = 'Sudo';
     res.render('linux_sudo', { pageTitle: pageTitle });
@@ -81,6 +96,11 @@ app.get('/linux_sudo', function(req, res) {
 app.get('/linux_sudoers_file', function(req, res) {
     var pageTitle = 'Sudoers File';
     res.render('linux_sudoers_file', { pageTitle: pageTitle });
+});
+
+app.get('/nginx_files', function(req, res) {
+    var pageTitle = 'Nginx Configuration Files';
+    res.render('nginx_files', { pageTitle: pageTitle });
 });
 
 app.get('/scripting_bash_scripting', function(req, res) {

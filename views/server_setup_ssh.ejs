@@ -1,0 +1,69 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <h3>Set up SSH Public and Private Keys</h3>
+  <article>
+    <br>
+    <p>...</p>
+    <br>
+  </article>
+  <hr>
+
+  <h3>Copy Public SSH Key from Local Machine to Remote Server</h3>
+  <article>
+    <p>
+      If there is already a public / private key onthe local machine, set up the remote server with the public key using <code>&nbsp ssh-copy-id &nbsp</code>.
+    </p>
+    <p>
+      This will need to be done for all user accounts for each account to have this capability.
+    </p>
+    <p>
+      <code>&nbsp ~$ ssh-copy-id username@server_ip_address &nbsp</code>
+    </p>
+    <ul><li>enter password at prompt.</li></ul>
+    <p>
+      Login from local machine to remote server.
+    </p>
+    <p>
+        <code>&nbsp ~$ ssh username@server_ip_address &nbsp</code>
+      </p>
+  </article>
+  <hr>
+  <h3>Disable Password Access</h3>
+  <article>
+    <p>
+      Confirm that the superuser account has admin privledges (sudo).  Open the ssh configuration firl in nano on the remote server.
+    </p>
+    <p>
+      <code>&nbsp $ sudo nano /etc/ssh/sshd_config &nbsp</code>
+    </p>
+    <p>
+      Find the 'Password Authentication' line, uncomment and change to 'no'.
+    </p>
+    <p>
+      <pre>PasswordAuthentication no</pre>
+    </p>
+
+    <p>
+      Close (Ctrl+X), Save ('Y'), and Exit (File Name: 'Enter')
+    </p>
+    <br>
+    <p>
+      Restart sshd service.
+    </p>
+    <p>
+      <code>&nbsp $ sudo systemctl restart ssh &nbsp</code>
+    </p>
+    <p>
+      Before logging out or closing the terminal, open another terminal instance to verify SSH is still working as a login.
+    </p>
+    <p>
+      Accessing any user account with a regular password is now not possible.  Login via remote SSH only.
+    </p>
+  </article>
+  <hr>
+
+   
+ </section>
+ <div class="center"> <a href="server_setup_dns">Next: DNS</a> </div>
+<% include ./partials/footer.ejs %>
