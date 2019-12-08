@@ -60,34 +60,57 @@ app.get('/server_setup_initial', function(req, res) {
     var pageTitle = 'Ubuntu Server Setup';
     res.render('server_setup_initial', { pageTitle: pageTitle });
 });
+
 app.get('/server_setup_ssh', function(req, res) {
     var pageTitle = 'SSH';
     res.render('server_setup_ssh', { pageTitle: pageTitle });
 });
+
 app.get('/server_setup_dns', function(req, res) {
     var pageTitle = 'DNS';
     res.render('server_setup_dns', { pageTitle: pageTitle });
 });
+
 app.get('/server_setup_nginx', function(req, res) {
     var pageTitle = 'Nginx';
     res.render('server_setup_nginx', { pageTitle: pageTitle });
 });
+
 app.get('/server_setup_https', function(req, res) {
     var pageTitle = 'SSL & HTTPS';
     res.render('server_setup_https', { pageTitle: pageTitle });
 });
+
 app.get('/server_setup_node', function(req, res) {
     var pageTitle = 'Install Node.js';
     res.render('server_setup_node', { pageTitle: pageTitle });
 });
+
 app.get('/server_setup_pm2', function(req, res) {
     var pageTitle = 'PM2';
     res.render('server_setup_pm2', { pageTitle: pageTitle });
 });
+
 app.get('/server_setup_nginx_proxy', function(req, res) {
     var pageTitle = 'Nginx as a Reverse Proxy';
     res.render('server_setup_nginx_proxy', { pageTitle: pageTitle });
 });
+
+app.get('/server_setup_summary', function(req, res) {
+    var pageTitle = 'Server Setup Summary';
+    res.render('server_setup_summary', { pageTitle: pageTitle });
+});
+
+app.get('/server_setup_links', function(req, res) {
+    var pageTitle = 'Digital Ocean Links';
+    res.render('server_setup_links', { pageTitle: pageTitle });
+});
+
+app.get('/nginx_files', function(req, res) {
+    var pageTitle = 'Important Nginx Directories and Files';
+    res.render('nginx_files', { pageTitle: pageTitle });
+});
+
 app.get('/linux_sudo', function(req, res) {
     var pageTitle = 'Sudo';
     res.render('linux_sudo', { pageTitle: pageTitle });

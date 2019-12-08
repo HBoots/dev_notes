@@ -17,22 +17,93 @@
   <hr>
   <h3>Install Certbot</h3>
   <article>
-       
+       <p>
+         Certbot comes with Ubuntu but is usually outdated.  Install from a repository.
+       </p>
+       <p>
+         <code>&nbsp $ sudo add-apt-repository ppa:certbot/certbot &nbsp</code>
+       </p>
+       <p>
+         <code>&nbsp $ sudo apt install python-certbot-nginx &nbsp</code>
+       </p>
+       <p>
+         Certbot will look for a 'server_name' directive, that matches the domain name, inside the server blocks in the /sites-available/ directory.
+       </p>
+       <p>
+         <pre>server_name example.com www.example.com;</pre>
+       </p>
   </article>
   <hr>
   <h3>Allow HTTPS </h3>
   <article>
-       
+       <p>
+         Allow HTTPS through the ufw firewall.  Be sure to delete any redundant rules.
+       </p>
+       <p>
+         <code>&nbsp $ sudo ufw allow 'Nginx Full' &nbsp</code>
+       </p>
+       <p>
+         <code>&nbsp $ sudo ufw delete 'Nginx HTTP' &nbsp</code>
+       </p>
+       <p>
+         <code>&nbsp $ sudo ufw status &nbsp</code>
+       </p>
+       <p>
+         <pre>> Status: active
+              
+  To                         Action      From
+  --                         ------      ----
+  OpenSSH                    ALLOW       Anywhere
+  Nginx Full                 ALLOW       Anywhere
+  OpenSSH (v6)               ALLOW       Anywhere (v6)
+  Nginx Full (v6)            ALLOW       Anywhere (v6)</pre>
+       </p>
   </article>
   <hr>
   <h3>Obtain SSL Certificate</h3>
   <article>
-       
+       <p>
+         Use Nginx to run Certbot.  Be sure to use <strong><em>-d</em></strong> flags in front of the domains that are getting certified.
+       </p>
+       <p>
+         <code>&nbsp $ sudo certbot --nginx -d example.com -d www.example.com &nbsp</code>
+       </p>
+       <p>
+         When prompted, enter email and agree to terms.
+       </p>
+       <p>
+         Cerbot will communicate with the Let's Encrypt server and verify the domain name.
+       </p>
+       <p>
+         When prompted, choose whether to redirect HTTP requests to HTTPS.
+       </p>
+       <p>
+         Reload the site in the browser with https://
+       </p>
+       <p>
+         Test the server at <a href="https://www.ssllabs.com/ssltest/">https://www.ssllabs.com/ssltest/</a> which should get an 'A' grade.
+       </p>
   </article>
   <hr>
   <h3>Verify Certbot Autorenewal</h3>
   <article>
-
+      <p>
+        Certificates are technically valid for only 90 days.  Certbot adds a rewnwal script to ...
+      </p>
+      <p>
+        <pre>/etc/cron.d</pre>
+      </p>
+      <p>
+        The script runs 2 times per day and automatically renews all certificates within 30 days of expiration.
+      </p>
+      <p>
+        To test and check for errors...
+      </p>
+      <p>
+        <code>&nbsp $ sudo cerbot --renew --dry-run &nbsp</code>
+      </p>
+      <br>
+      <p><strong><em>Certbot Documentation:</em></strong></p> <a href="https://certbot.eff.org/docs/">https://certbot.eff.org/docs/</a>
   </article>
   <hr>
  </section>

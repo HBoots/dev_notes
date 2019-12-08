@@ -109,6 +109,13 @@ ul.no-dot {
     padding-top: 1px;
 }
 
+.inline-highlight {
+    background-color: #eee;
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .center {
     text-align: center;
 }

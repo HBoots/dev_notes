@@ -3,37 +3,227 @@
 <section>
   <h3>Installation and Initial Checks</h3>
   <article>
-    <p></p>
+    <p>
+      <code>&nbsp $ sudo apt update &nbsp</code>
+    </p>
+    <p>
+      <code>&nbsp $ sudo apt install nginx &nbsp</code>
+    </p>
+    <p>
+      Check that the firewall has automatically added Nginx profiels to the application list.
+    </p>
+    <p>
+      <code>&nbsp $ sudo ufw app list &nbsp</code>
+    </p>
+    <p>
+      <pre>> Available applications:
+        Nginx Full
+        Nginx HTTP
+        Nginx HTTPS
+        OpenSSH</pre>
+    </p>
+    <p>
+      Nginx full opens both port 80 (unecrypted) and port 443 (TLS/SSL encrypted).
+    </p>
+    <p>
+      Nginx HTTP opens only port 80.
+    </p>
+    <p>
+      Nginx HTTPS opens only port 443.
+    </p>
+    <p>
+      Then give a profile permission.
+    </p>
+    <p>
+      <code>&nbsp $ sudo ufw allow 'Nginx Full' &nbsp</code>
+    </p>
   </article>
   <hr>
   <h3>Verify Nginx is Running</h3>
   <article>
-    <p></p>
+    <p>
+      Nginx should be running automatically after installation.
+    </p>
+    <p>
+      <code>&nbsp $ systemctl status nginx &nbsp</code>
+    </p>
+    <p>
+      <pre>> nginx.service - A high performance web server and a reverse proxy
+         server
+        Loaded: loaded (/lib/systemd/system/nginx.service; enabled; 
+        vendor preset: enabled)
+        Active: active (running) since Fri 2018-04-20 16:08:19 UTC;
+        3 days ago
+          Docs: man:nginx(8)
+      Main PID: 2369 (nginx)
+         Tasks: 2 (limit: 1153)
+        CGroup: /system.slice/nginx.service
+                ├─2369 nginx: master process /usr/sbin/nginx -g 
+                daemon on;
+                master_process on;
+                └─2380 nginx: worker process</pre>
+    </p>
+    <p>
+      Also check that the IP address is connected to the the internet.  The server IP should direct to the Nginx default  landing page.  From any browser...
+    </p>
+    <p>
+      <pre>http://server_IP_address</pre>
+    </p>
   </article>
   <hr>
   <h3>Basic Management of the Web Server</h3>
   <article>
-    <p></p>
+    <p>
+      <code>&nbsp $ sudo systemctl stop nginx &nbsp</code>
+    </p>
+    <p>
+      <code>&nbsp $ sudo systemctl start nginx &nbsp</code>
+    </p>
+    <p>
+      <code>&nbsp $ sudo systemctl restart nginx &nbsp</code>
+    </p>
+    <p>
+      Wehn changes are made often a reload will put the changes into effect without stopping service.
+    </p>
+    <p>
+      <code>&nbsp $ sudo systectl reload nginx &nbsp</code>
+    </p>
+    <p>
+      Nginx will start automatically with a server reboot.  To disable that feature, disable Nginx.
+    </p>
+    <p>
+      <code>&nbsp $ sudo systectl disable nginx &nbsp</code>
+    </p>
+    <p>
+      <code>&nbsp $ sudo systectl enable nginx &nbsp</code>
+    </p>
   </article>
   <hr>
   <h3>Server Blocks</h3>
   <article>
-    <p></p>
+    <p>
+      Server Blocks can be used to encapsulate configuration details so that more than one domain can be run from a single server.  By default, Ubuntu 18 has one server block enabled.
+    </p>
+    <p>
+      Default html configuration file.  This contains the Nginx default landing page.
+    </p>
+    <p>
+      <pre>/var/www/html</pre>
+    </p>
+    <p>
+      It is best practice to create and configure a unique file for each site.
+    </p>
+    <p>
+      <pre>/var/www/example.com/html</pre>
+    </p>
+    <p>
+      Assign ownership...
+    </p>
+    <p>
+      <code>&nbsp $ sudo chown -R $USER:$USER /var/www/example.com/html &nbsp</code>
+    </p>
+    <p>
+      Assign permissions...
+    </p>
+    <p>
+      <code>&nbsp $ sudo chmod -R 755 /var/www/example.com/html &nbsp</code>
+    </p>
+    <p>
+      <strong>All the web application files are placed inside this directory.</strong> 
+    </p>
   </article>
   <hr>
   <h3>Create a Server Block</h3>
   <article>
-    <p></p>
+    <p>
+      Add a new server configuration file for each site.
+    </p>
+    <p>
+      <pre>/etc/nginx/sites-available/example.com</pre>
+    </p>
+    <p>
+      Add a configuration block to the file.
+    </p>
+    <p>
+      <pre>server {
+         listen 80;
+             listen [::]:80;
+                            
+             root /var/www/example.com/html;
+             index index.html index.htm index.nginx-debian.html;
+            
+             server_name example.com www.example.com;
+                         
+             location / {
+                     try_files $uri $uri/ =404;
+             }
+        }</pre>
+    </p>
+    <p>
+      The root configuration indicates the application directory.
+    </p>
+    <p>
+      <pre>root /var/www/example.com/html;</pre>
+    </p>
+    <p>
+      The server name is set to the domain name and aliases.
+    </p>
+    <p>
+      <pre>server_name example.com www.example.com;</pre>
+    </p>
+    <p>
+      Create a soft link from the configuration file ...
+    </p>
+    <p>
+      <pre>/etc/nginx/sites-available/example.com</pre>
+    </p>
+    <p>
+      ...to ...
+    </p>
+    <p>
+      <pre>/etc/nginx/sites-enabled/</pre>
+    </p>
+    <p>
+      <code>&nbsp $ sudo ln -s /etc/nginx/sites-available/example.com   /etc/nginx/sites-enabled/ &nbsp</code>
+    </p>
   </article>
   <hr>
   <h3>Nginx Configuration File</h3>
   <article>
-    <p></p>
+    <p>
+      To avoid a potential hash bucket memory problem, change a setting in Nginx's main configuration file. <em>(See the link at the bottom for a list and explanation of some of the important files in Nginx)</em>
+    </p>
+    <p>
+      <pre>/etc/nginx/nginx.conf</pre>
+    </p>
+    <p>
+      Uncomment the line ...
+    </p>
+    <p>
+      <pre>server_names_hash_bucket_size 64;</pre>
+    </p>
+    <p>
+      After making changes to Nginx files always use the built in utility which checks for syntax errors.
+    </p>
+    <p>
+      <code>&nbsp $ sudo nginx -t &nbsp</code>
+    </p>
+    <p>
+      Restart Nginx to enable changes.
+    </p>
+    <p>
+      <code>&nbsp $ sudo systemctl restart nginx &nbsp</code>
+    </p>
   </article>
   <hr>
   <h3>Test the Server</h3>
   <article>
-    <p></p>
+    <p>
+      Navigate to the domain with a browser.
+    </p>
+    <p>
+      The html content in the unique html configuration file should be showing.
+    </p>
   </article>
   <hr>
  </section>

@@ -1,0 +1,115 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <!-- <h3></h3> -->
+  <article>
+      <p><strong>Set Up User Access to the Server</strong></p>
+      <ul>
+          <li>
+              Log in as root user from local machine
+          </li>
+          <li>
+              Create a superuser account
+          </li>
+          <li>
+              Allow and enable OpenSSH through ufw firewall
+          </li>
+          <li>
+              Copy SSH public key from local machine to remote server
+          </li>
+          <li>
+              Verify SSH access for all users
+          </li>
+          <li>
+              Disable password access
+          </li>
+      </ul>
+      <p><strong>Get a Domain Name</strong></p>
+      <ul>
+          <li>
+              Register a domain name
+          </li>
+          <li>
+              Set up DNS records in server account
+          </li>
+          <li>
+              Delegate domain name to servers through registrar
+          </li>
+      </ul>
+      <p><strong>Set up Nginx to Run the Server</strong></p>
+      <ul>
+          <li>
+              Install Nginx
+          </li>
+          <li>
+              Allow and enable Nginx profile through ufw firewall
+          </li>
+          <li>
+              Verify Nginx is running.  Check for Nginx landing page with server IP in a browser.
+          </li>
+      </ul>
+      <p><strong>Create a Server Block in Nginx</strong></p>
+      <ul>
+          <li>
+              Create a new html configuration directory for the site.  Assign ownership and permissions.
+          </li>
+          <li>
+              Create a new server configuration file for the site.
+          </li>
+          <li>
+              Create a soft link from the server configuration file in the <strong><em>/sites-available/</em></strong> directory to the <strong><em>/sites-enabled/</em></strong> directory.
+          </li>
+          <li>
+              Make the change in the Nginx configuration file to pprevent hash bucket problem.
+          </li>
+          <li>
+              Check for syntax errors.
+          </li>
+          <li>
+              Restart Nginx
+          </li>
+          <li>
+              Test domain name on a browser.
+          </li>
+      </ul>
+      <p><strong>Get an SSL Certificate from Let's Encrypt</strong></p>
+      <ul>
+          <li>
+              Install Certbot
+          </li>
+          <li>
+              Allow and enable 'Nginx Full' through ufw firewall
+          </li>
+          <li>
+              Run Certbot
+          </li>
+          <li>
+              Test Server
+          </li>
+          <li>
+              Verify autorenewal
+          </li>
+      </ul>
+      <p><strong>Install Node.js</strong></p>
+      <ul>
+          <li>
+
+          </li>
+      </ul>
+      <p><strong>Install PM2</strong></p>
+      <ul>
+          <li>
+
+          </li>
+      </ul>
+      <p><strong>Set up Nginx as a Reverse Proxy</strong></p>
+      <ul>
+          <li>
+
+          </li>
+      </ul>
+  </article>
+  <hr>
+ </section>
+ <!-- <div class="center"> <a href="">Next: </a> </div> -->
+<% include ./partials/footer.ejs %>
