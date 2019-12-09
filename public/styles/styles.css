@@ -58,8 +58,13 @@ code {
 code {
     background-color: #f7e1ba;
     font-style: normal;
-    padding: 1px;
+    margin: 0;
+    padding: 0px;
 }
+
+/* code.inline {
+    margin: 0;
+} */
 
 pre code {
     display: block;
