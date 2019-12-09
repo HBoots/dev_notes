@@ -59,7 +59,7 @@ code {
     background-color: #f7e1ba;
     font-style: normal;
     margin: 0;
-    padding: 0px;
+    padding: 0 8px;
 }
 
 /* code.inline {

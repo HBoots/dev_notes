@@ -12,7 +12,7 @@
     <h3>Installation</h3>
     <article>
         <p>
-            <code>&nbsp $ sudo npm install pm2@latest -g &nbsp</code>
+            <code>$ sudo npm install pm2@latest -g</code>
         </p>
     </article>
     <hr>
@@ -22,7 +22,7 @@
             Start the application with PM2 through the application entry file.  The application is then added to PM2's process list.
         </p>
         <p>
-            <code>&nbsp $ pm2 start app.js &nbsp</code>
+            <code>$ pm2 start app.js</code>
         </p>
         <p>
         <pre>
@@ -42,7 +42,7 @@
             Generate a startup script to allow PM2 to start application on server startup.  
         </p>
         <p>
-            <code>&nbsp $ pm2 startup systemd &nbsp</code>
+            <code>$ pm2 startup systemd</code>
         </p>
         <p>
             Copy, paste and run the given command to create and install the script.
@@ -55,18 +55,18 @@
     sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2
     startup systemd -u username --hp /home/username </pre>
         </p>
-            <p>
+        <p>
             Save the PM2 process list and envronment.
         </p>
         <p>
-            <code>&nbsp $ pm2 save &nbsp</code>
+            <code>$ pm2 save</code>
         </p>
     </article>
     <hr>
     <h3>Starting the Service</h3>
     <article>
         <p>
-            <code>&nbsp $ sudo systemctl start pm2-username &nbsp</code>
+            <code>$ sudo systemctl start pm2-username</code>
         </p>
     </article>
     <hr>
@@ -76,19 +76,19 @@
             The app name is the name of the file that serves as the entry point to the application.  In many Node.js applications this is app.js or index.js.  Also note that it is necessary to navigate to the directory holding the file to run PM2 commands on it.
         </p>
         <p>
-            <code>&nbsp $ sudo systemctl status pm2-username &nbsp</code>
+            <code>$ sudo systemctl status pm2-username</code>
         </p>
         <p>
-            <code>&nbsp $ sudo pm2 stop app_name_or_id&nbsp</code>
+            <code>$ sudo pm2 stop app_name_or_i</code>
         </p>
         <p>
-            <code>&nbsp $ sudo pm2 restart app_name_or_id &nbsp</code>
+            <code>$ sudo pm2 restart app_name_or_id</code>
         </p>
-            <p>
+        <p>
             List all applications managed by PM2
         </p>
         <p>
-            <code>&nbsp $ pm2 list &nbsp</code>
+            <code>$ pm2 list</code>
         </p>
     </article>
     <hr>

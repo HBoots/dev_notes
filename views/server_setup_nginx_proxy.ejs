@@ -1,20 +1,20 @@
 <% include ./partials/header.ejs %>
 <% include ./partials/topbar.ejs %>
-            <section>
-              <article>
-                <h3>Set up</h3>
-                <div class="indent">
-                    <p>
-                        Open the Nginx application configuration file.
-                    </p>
-                    <p>
-                        <code>&nbsp $ sudo nano /etc/nginx/sites-available/example.com &nbsp</code>
-                    </p>
-                    <p>
-                        In the server block, change the 'location' to the code below.  Be sure to change the port number to whatever port your applications is running on.
-                    </p>
-                    <p>
-                        <pre>
+<section>
+    <article>
+    <h3>Set up</h3>
+    <div class="indent">
+        <p>
+            Open the Nginx application configuration file.
+        </p>
+        <p>
+            <code>$ sudo nano /etc/nginx/sites-available/example.com</code>
+        </p>
+        <p>
+            In the server block, change the 'location' to the code below.  Be sure to change the port number to whatever port your applications is running on.
+        </p>
+        <p>
+            <pre>
   server {
   ...
       location / {
@@ -27,29 +27,28 @@
       }
   ...
   }</pre>
-                    </p>
-                    <p>
-                        Adding additional location code blocks to the same server block is possible.  Include the application name after the forward slash and change the port number to the appropriate one.
-                    </p>
-                    <p>
-                        Save.  Exit.  Check for typos.
-                    </p>
-                    <p>
-                        <code>&nbsp $ sudo nginx -t &nbsp</code>
-                    </p>
-                    <p>
-                        Restart
-                    </p>
-                    <p>
-                        <code>&nbsp $ sudo systemctl restart nginx &nbsp</code>
-                    </p>
+        </p>
+        <p>
+            Adding additional location code blocks to the same server block is possible.  Include the application name after the forward slash and change the port number to the appropriate one.
+        </p>
+        <p>
+            Save.  Exit.  Check for typos.
+        </p>
+        <p>
+            <code>$ sudo nginx -t</code>
+        </p>
+        <p>
+            Restart
+        </p>
+        <p>
+            <code>$ sudo systemctl restart nginx</code>
+        </p>
 
-                </div>
-                
-              </article>
-              <br>
-              <hr>     
-         
-            </section>
-             <div class="center"> <a href="server_setup_summary">Next: Summary </a> </div>
-            <% include ./partials/footer.ejs %>
+    </div>
+    
+    </article>
+    <br>
+    <hr>     
+</section>
+<div class="center"> <a href="server_setup_summary">Next: Summary </a> </div>
+<% include ./partials/footer.ejs %>

@@ -4,16 +4,16 @@
   <h3>Installation and Initial Checks</h3>
   <article>
     <p>
-      <code>&nbsp $ sudo apt update &nbsp</code>
+      <code>$ sudo apt update</code>
     </p>
     <p>
-      <code>&nbsp $ sudo apt install nginx &nbsp</code>
+      <code>$ sudo apt install nginx</code>
     </p>
     <p>
       Check that the firewall has automatically added Nginx profiles to the application list.
     </p>
     <p>
-      <code>&nbsp $ sudo ufw app list &nbsp</code>
+      <code>$ sudo ufw app list</code>
     </p>
     <p>
       <pre>> Available applications:
@@ -35,7 +35,7 @@
       Then give a profile permission.
     </p>
     <p>
-      <code>&nbsp $ sudo ufw allow 'Nginx Full' &nbsp</code>
+      <code>$ sudo ufw allow 'Nginx Full'</code>
     </p>
   </article>
   <hr>
@@ -45,7 +45,7 @@
       Nginx should be running automatically after installation.
     </p>
     <p>
-      <code>&nbsp $ systemctl status nginx &nbsp</code>
+      <code>$ systemctl status nginx</code>
     </p>
     <p>
       <pre>> nginx.service - A high performance web server and a reverse proxy
@@ -74,28 +74,34 @@
   <h3>Basic Management of the Web Server</h3>
   <article>
     <p>
-      <code>&nbsp $ sudo systemctl stop nginx &nbsp</code>
+      After making changes to the server or server files, it is almost always necessary to restart Nginx (and maybe PM2 as well) for those changes to take effect.  Failing to do so will usually yield all sorts of cryptic errors.
     </p>
     <p>
-      <code>&nbsp $ sudo systemctl start nginx &nbsp</code>
+      So.... have you tried turning it off and on again?
     </p>
     <p>
-      <code>&nbsp $ sudo systemctl restart nginx &nbsp</code>
+      <code>$ sudo systemctl stop nginx</code>
+    </p>
+    <p>
+      <code>$ sudo systemctl start nginx</code>
+    </p>
+    <p>
+      <code>$ sudo systemctl restart nginx</code>
     </p>
     <p>
       When changes are made often a reload will put the changes into effect without stopping service.
     </p>
     <p>
-      <code>&nbsp $ sudo systectl reload nginx &nbsp</code>
+      <code>$ sudo systectl reload nginx</code>
     </p>
     <p>
       Nginx will start automatically with a server reboot.  To disable that feature, disable Nginx.
     </p>
     <p>
-      <code>&nbsp $ sudo systectl disable nginx &nbsp</code>
+      <code>$ sudo systectl disable nginx</code>
     </p>
     <p>
-      <code>&nbsp $ sudo systectl enable nginx &nbsp</code>
+      <code>$ sudo systectl enable nginx</code>
     </p>
   </article>
   <hr>
@@ -120,13 +126,13 @@
       Assign ownership...
     </p>
     <p>
-      <code>&nbsp $ sudo chown -R $USER:$USER /var/www/example.com/html/ &nbsp</code>
+      <code>$ sudo chown -R $USER:$USER /var/www/example.com/html/</code>
     </p>
     <p>
       Assign permissions...
     </p>
     <p>
-      <code>&nbsp $ sudo chmod -R 755 /var/www/example.com/html/ &nbsp</code>
+      <code>$ sudo chmod -R 755 /var/www/example.com/html/</code>
     </p>
     <p>
       <strong>All the web application files are placed inside this directory.</strong> 
@@ -184,7 +190,7 @@
       <pre>/etc/nginx/sites-enabled/</pre>
     </p>
     <p>
-      <code>&nbsp $ sudo ln -s /etc/nginx/sites-available/example.com   /etc/nginx/sites-enabled/ &nbsp</code>
+      <code>$ sudo ln -s /etc/nginx/sites-available/example.com   /etc/nginx/sites-enabled/</code>
     </p>
   </article>
   <hr>
@@ -206,13 +212,13 @@
       After making changes to Nginx files always use the built in utility which checks for syntax errors.
     </p>
     <p>
-      <code>&nbsp $ sudo nginx -t &nbsp</code>
+      <code>$ sudo nginx -t</code>
     </p>
     <p>
       Restart Nginx to enable changes.
     </p>
     <p>
-      <code>&nbsp $ sudo systemctl restart nginx &nbsp</code>
+      <code>$ sudo systemctl restart nginx</code>
     </p>
   </article>
   <hr>

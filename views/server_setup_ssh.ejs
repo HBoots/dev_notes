@@ -12,30 +12,30 @@
   <h3>Copy Public SSH Key from Local Machine to Remote Server</h3>
   <article>
     <p>
-      If there is already a public / private key on the local machine, set up the remote server with the public key using <code>&nbspssh-copy-id&nbsp</code>.
+      If there is already a public / private key on the local machine, set up the remote server with the public key using <code>ssh-copy-id</code>.
     </p>
     <p>
       This will need to be done for all user accounts for each account to have this capability.
     </p>
     <p>
-      <code>&nbsp ~$ ssh-copy-id username@server_ip_address &nbsp</code>
+      <code>~$ ssh-copy-id username@server_ip_address</code>
     </p>
     <ul><li>enter password at prompt.</li></ul>
     <p>
       Login from local machine to remote server.
     </p>
     <p>
-        <code>&nbsp ~$ ssh username@server_ip_address &nbsp</code>
+        <code>~$ ssh username@server_ip_address</code>
       </p>
   </article>
   <hr>
   <h3>Disable Password Access</h3>
   <article>
     <p>
-      Confirm that the superuser account has admin privledges (sudo).  Open the ssh configuration file in nano on the remote server.
+      Confirm that the superuser account has admin privledges <code>sudo</code>.  Open the ssh configuration file in nano on the remote server.
     </p>
     <p>
-      <code>&nbsp $ sudo nano /etc/ssh/sshd_config &nbsp</code>
+      <code>$ sudo nano /etc/ssh/sshd_config</code>
     </p>
     <p>
       Find the 'Password Authentication' line, uncomment and change to 'no'.
@@ -45,14 +45,14 @@
     </p>
 
     <p>
-      Close (Ctrl+X), Save ('Y'), and Exit (File Name: 'Enter')
+      Close <code>Ctrl+X</code>, Save <code>Y</code>, and Exit <code>Enter</code>
     </p>
     <br>
     <p>
       Restart sshd service.
     </p>
     <p>
-      <code>&nbsp $ sudo systemctl restart ssh &nbsp</code>
+      <code>$ sudo systemctl restart ssh</code>
     </p>
     <p>
       Before logging out or closing the terminal, open another terminal instance to verify SSH is still working as a login.

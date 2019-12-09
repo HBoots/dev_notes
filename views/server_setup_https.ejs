@@ -21,10 +21,10 @@
          Certbot comes with Ubuntu but is usually outdated.  Install from a repository.
        </p>
        <p>
-         <code>&nbsp $ sudo add-apt-repository ppa:certbot/certbot &nbsp</code>
+         <code>$ sudo add-apt-repository ppa:certbot/certbot</code>
        </p>
        <p>
-         <code>&nbsp $ sudo apt install python-certbot-nginx &nbsp</code>
+         <code>$ sudo apt install python-certbot-nginx</code>
        </p>
        <p>
          Certbot will look for a 'server_name' directive, that matches the domain name, inside the server blocks in the /sites-available/ directory.
@@ -40,13 +40,13 @@
          Allow HTTPS through the ufw firewall.  Be sure to delete any redundant rules.
        </p>
        <p>
-         <code>&nbsp $ sudo ufw allow 'Nginx Full' &nbsp</code>
+         <code>$ sudo ufw allow 'Nginx Full'</code>
        </p>
        <p>
-         <code>&nbsp $ sudo ufw delete 'Nginx HTTP' &nbsp</code>
+         <code>$ sudo ufw delete 'Nginx HTTP'</code>
        </p>
        <p>
-         <code>&nbsp $ sudo ufw status &nbsp</code>
+         <code>$ sudo ufw status</code>
        </p>
        <p>
          <pre>> Status: active
@@ -66,7 +66,7 @@
          Use Nginx to run Certbot.  Be sure to use <strong><em>-d</em></strong> flags in front of the domains that are getting certified.
        </p>
        <p>
-         <code>&nbsp $ sudo certbot --nginx -d example.com -d www.example.com &nbsp</code>
+         <code>$ sudo certbot --nginx -d example.com -d www.example.com</code>
        </p>
        <p>
          When prompted, enter email and agree to terms.
@@ -100,7 +100,7 @@
         To test and check for errors...
       </p>
       <p>
-        <code>&nbsp $ sudo cerbot --renew --dry-run &nbsp</code>
+        <code>$ sudo cerbot --renew --dry-run</code>
       </p>
       <br>
       <p><strong><em>Certbot Documentation:</em></strong></p> <a href="https://certbot.eff.org/docs/">https://certbot.eff.org/docs/</a>
