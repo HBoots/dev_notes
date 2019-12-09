@@ -105,28 +105,28 @@
       Server Blocks can be used to encapsulate configuration details so that more than one domain can be run from a single server.  By default, Ubuntu 18 has one server block enabled.
     </p>
     <p>
-      Default html configuration file.  This contains the Nginx default landing page.
+      Default html directory.  This contains the Nginx default landing page.
     </p>
     <p>
-      <pre>/var/www/html</pre>
+      <pre>/var/www/html/</pre>
     </p>
     <p>
       It is best practice to create and configure a unique directory for each site.
     </p>
     <p>
-      <pre>/var/www/example.com/html</pre>
+      <pre>/var/www/example.com/html/</pre>
     </p>
     <p>
       Assign ownership...
     </p>
     <p>
-      <code>&nbsp $ sudo chown -R $USER:$USER /var/www/example.com/html &nbsp</code>
+      <code>&nbsp $ sudo chown -R $USER:$USER /var/www/example.com/html/ &nbsp</code>
     </p>
     <p>
       Assign permissions...
     </p>
     <p>
-      <code>&nbsp $ sudo chmod -R 755 /var/www/example.com/html &nbsp</code>
+      <code>&nbsp $ sudo chmod -R 755 /var/www/example.com/html/ &nbsp</code>
     </p>
     <p>
       <strong>All the web application files are placed inside this directory.</strong> 
