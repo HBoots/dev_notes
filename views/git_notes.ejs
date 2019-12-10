@@ -1,0 +1,36 @@
+<% include ./partials/header.ejs %>
+<% include ./partials/topbar.ejs %>
+<section>
+  <h3>Remote Repositories</h3>
+  <article>
+    <p>
+      Connect to a remote repository via URL (login) or SSH (private key)
+    </p>
+    <p>
+      On the local machine modify the <code>.git/.config</code> file by using the below commands inside the project directory.
+    </p>
+    <p>
+      <strong><em>Add a new repository...</em></strong>
+    </p>
+    <p>
+      URL: <code>git remote add origin https://github.com/username/repository.git</code>
+    </p>
+    <p>
+      SSH: <code>git remote add origin git@github.com:username/repository.git</code>
+    </p>
+    <p>
+      <strong><em>Change an exisiting repository...</em></strong>
+    </p>
+    <p>
+      URL: <code>git remote set-url origin ...</code>
+    </p>
+    <p>
+      SSH: <code>git remote set-url origin ...</code>
+    </p>
+
+  </article>
+ 
+       
+</section>
+<!-- <div class="center"> <a href="server_setup_ssh">Next: SSH</a> </div> -->
+<% include ./partials/footer.ejs %>

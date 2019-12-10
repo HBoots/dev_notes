@@ -26,6 +26,11 @@ app.get('/', function(req, res) {
     res.render('index', { pageTitle: pageTitle });
 });
 
+app.get('/git_notes', function(req, res) {
+    var pageTitle = 'Git Notes';
+    res.render('git_notes', { pageTitle: pageTitle });
+});
+
 app.get('/linux_commands', function(req, res) {
     var pageTitle = 'Linux Commands';
     res.render('linux_commands', { pageTitle: pageTitle });
