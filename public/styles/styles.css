@@ -29,6 +29,15 @@ article {
     margin: auto;
 }
 
+.top-bar {
+    text-align: center;
+}
+
+.top-bar a {
+    display: inline-block;
+    padding: 0 25px;
+}
+
 /* FOR PDF CONVERSION ****/
 
 .end {
@@ -39,11 +48,11 @@ article {
     page-break-before: always;
 }
 
+/************************/
+
 .correct:hover {
     background-color: #48d1cc;
 }
-
-/************************/
 
 pre,
 code {
