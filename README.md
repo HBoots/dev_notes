@@ -1,23 +1,18 @@
 ## Developer Notes
 
-A very lean Nodejs site with minimal styling intended to provide reference on various topics in Web Development and Linux operating systems.
+A lean, minimally styled static NodeJS driven site of notes, references and links of useful information to Web Developers.  Specifically myself.
 
-*Work in Progress*  
-This will be updated and improved in time.
+It is a way to always have my notes handy and in one place.
 
-**_Linux topics include:_**
-* Linux file structure
-* Working with files in Linux
-* Setting up Linux privleges
-* Bash scripting
-* Setting up and working with Ubuntu servers
+#### [Dev Notes](https://developer-notes.herokuapp.com/)  
 
-**_Developer Links_**
-* HTML Table Generator
-* Markdown Syntax Cheatsheet
+### Changes
 
-**_Other topics include:_**
-* Webpack
-* Links to various online HTML and CSS tools and reference
+* Complete notes on Git, Nginx, HTTP, Node and Linux Commands
+* Separate the Rules of the Road project
+* Add a new topic heading linking other projects
+* Improve functionality and styling
+    * Put topic headings in a sidebar of links or buttons
+    * Sidebar topics spawn a list of content links in the main page
+    * Experiment with some styling techniques
 
-#### [Dev Notes](https://developer-notes.herokuapp.com/)
