@@ -20,7 +20,7 @@ article {
 }
 
 .main {
-    max-width: 700px;
+    max-width: 750px;
     margin: auto;
 }
 
@@ -62,7 +62,7 @@ article {
 pre,
 code {
     background-color: rgb(230, 226, 222);
-    color: #333
+    color: #333;
     font-size: .95rem;
     font-style: italic;
     font-family: 'Courier New';
