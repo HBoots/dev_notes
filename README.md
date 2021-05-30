@@ -8,6 +8,9 @@ It is a way to always have my notes handy and in one place.
 
 ### Changes
 
+* Add some damn styling and organize topics better
+    * Drop down menus
+* Add Python and Django section
 * Complete notes on Git, Nginx, HTTP, Node and Linux Commands
 * Separate the Rules of the Road project
 * Add a new topic heading linking other projects
