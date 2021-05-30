@@ -11,13 +11,6 @@
     </p>
     <br>
     <p>
-      Run as a user specified in a RUN_AS alias the configuration file (Sudoers File).
-    </p>
-    <p>
-      <code>&nbsp$ sudo -u run_as_alias command&nbsp</code>
-    </p>
-    <br>
-    <p>
       Sudo will save authentication for a certain amount of time then the authentication will expire.
     </p>
     <p>
@@ -27,6 +20,29 @@
       <code>&nbsp$ sudo -k&nbsp</code>
     </p>
     <br>
+    <p>
+      To change the length of time before timeout when using <code>sudo</code>, alter the <code>/etc/sudoers</code>
+      file.
+    </p>
+    <p>
+      <code>&nbspDefaults env_reset, timestamp_timeout-[value]&nbsp</code>
+    </p>
+    <br>
+    <p>
+      To show asterisks while entering a password
+    </p>
+    <p>
+      <code>&nbspDefaults env_reset,pwfeedback&nbsp</code>
+    </p>
+    <br>
+    <p>
+      Run as a user specified in a RUN_AS alias the configuration file (Sudoers File).
+    </p>
+    <p>
+      <code>&nbsp$ sudo -u run_as_alias command&nbsp</code>
+    </p>
+    <br>
+
     <p>
       To 'prime' the sudo command to avoid being prompted or to renew the sudo timer...
     </p>
@@ -42,7 +58,22 @@
     </p>
     <br>
     <p>
-      If you forget to type <code>&nbspsudo&nbsp</code> when you try to run a command you can rerun the previous command as sudo...
+      To open a shell with sudo privledges...
+    </p>
+    <p>
+      <code>&nbsp$ sudo -s&nbsp</code>
+    </p>
+    <br>
+    <p>
+      To use the 'root' environment without becoming root... (this ignores user's <code>.bashrc</code>)
+    </p>
+    <p>
+      <code>&nbsp$ sudo -i&nbsp</code>
+    </p>
+    <br>
+    <p>
+      If you forget to type <code>&nbspsudo&nbsp</code> when you try to run a command you can rerun the previous command
+      as sudo...
     </p>
     <p>
       <code>&nbsp$ sudo !!&nbsp</code>
