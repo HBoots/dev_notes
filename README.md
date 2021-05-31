@@ -2,7 +2,7 @@
 
 A lean, minimally styled static NodeJS driven site of notes, references and links of useful information to Web Developers.  Specifically myself.
 
-It is a way to always have my notes handy and in one place.
+It is a way to always have some personalized reference material handy and in one place.
 
 #### [Dev Notes](https://developer-notes.herokuapp.com/)  
 
@@ -11,7 +11,17 @@ It is a way to always have my notes handy and in one place.
 * Add some damn styling and organize topics better
     * Drop down menus
 * Add Python and Django section
-* Complete notes on Git, Nginx, HTTP, Node and Linux Commands
+* More Notes:
+    * Git
+        * set up repo
+        * set up SSH
+        * branching / merging
+    * HTTP
+    * Nginx
+    * Apache
+    * Linux Commands
+        * Networking
+    * RegEx
 * Separate the Rules of the Road project
 * Add a new topic heading linking other projects
 * Improve functionality and styling
