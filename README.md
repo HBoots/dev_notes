@@ -8,8 +8,10 @@ It is a way to always have some personalized reference material handy and in one
 
 ### Changes
 
-* Add some damn styling and organize topics better
-    * Drop down menus
+* Continue to improve styling
+    * Remove unecessary hr tags
+    * Find a better theme
+* Remake index with a list of heading that open a side menu of contents on hover.
 * Add Python and Django section
 * More Notes:
     * Git
@@ -24,8 +26,4 @@ It is a way to always have some personalized reference material handy and in one
     * RegEx
 * Separate the Rules of the Road project
 * Add a new topic heading linking other projects
-* Improve functionality and styling
-    * Put topic headings in a sidebar of links or buttons
-    * Sidebar topics spawn a list of content links in the main page
-    * Experiment with some styling techniques
 

@@ -4,7 +4,7 @@
 
 html,
 body {
-  font-size: 14px;
+  font-size: 16px;
   /* font-family: Calibri; */
   font-family: "Roboto", serif;
   /* font-family: 'Quicksand', serif; */
@@ -67,10 +67,9 @@ pre,
 code {
   background-color: #d9d9d9;
   color: #333;
-  font-size: 0.80rem;
+  font-size: 0.8rem;
   font-style: italic;
   font-family: "Courier New";
-  /* margin-left: 0px; */
   padding: 8px 3px 8px 3px;
 }
 
@@ -82,16 +81,15 @@ code {
   background-color: #eee;
   font-style: normal;
   border-radius: 2px;
-  margin: 10px;
   padding: 2px 8px;
 }
 
 code.indent {
-    margin: 30px;
+  margin: 30px;
 }
 
-p code{
-    margin: 0;
+p code {
+  margin: 0;
 }
 
 pre code {
@@ -105,17 +103,14 @@ h3 {
 }
 
 h4 {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
-p {
+p td {
   font-size: 1em;
   font-style: normal;
   font-weight: normal;
   color: #444;
-  /* text-indent: 15px; */
-  /* margin-top: 8px; */
-  /* margin-bottom: 8px; */
 }
 
 hr {
@@ -133,10 +128,10 @@ ul.no-dot {
   list-style: none;
 }
 
-article{
-    border: solid #ddd 0.5px;
-    border-radius: 5px;
-    padding: 5px 30px 5px 30px;
+article {
+  border: solid #ddd 0.5px;
+  border-radius: 5px;
+  padding: 5px 30px 5px 30px;
 }
 
 .highlight {
@@ -196,6 +191,7 @@ tr {
 
 td {
   vertical-align: top;
+  padding-bottom: 10px;
 }
 
 .grid,
