@@ -15,12 +15,12 @@
           <tr class='spacer20'></tr>
           <tr>
             <td class=""><span class='inline-highlight'><em>/etc/nginx/sites-available/</em></span></td>
-            <td class=""> Directory where server blocks for each site are stored.  These files must be linked to the /sites-enabled/ directory for Nginx to use them.</td>
+            <td class=""> Directory where server blocks for each site are stored.  These files must be linked from the <code>/sites-enabled</code> directory for Nginx to use them.</td>
           </tr>
           <tr class='spacer20'></tr>
           <tr>
             <td class=""><span class='inline-highlight'><em>/etc/nginx/sites-enabled/</em></span></td>
-            <td class=""> Directory for enabled server blocks.  In practice, server blocks are stored in teh /sites-available/ directory then soft linked to this directory.</td>
+            <td class=""> Directory for enabled server blocks.  In practice, server blocks are stored in the <code>/sites-available/</code> directory.  Soft links to the files there are stored here.</td>
           </tr>
           <tr class='spacer20'></tr>
           <tr>

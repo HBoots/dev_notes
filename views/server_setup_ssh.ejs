@@ -1,69 +1,99 @@
 <% include ./partials/header.ejs %>
 <% include ./partials/topbar.ejs %>
-<section>
-  <h3>Set up SSH Public and Private Keys</h3>
-  <article>
-    <br>
-    <p>...</p>
-    <br>
-  </article>
-  <hr>
 
-  <h3>Copy Public SSH Key from Local Machine to Remote Server</h3>
-  <article>
-    <p>
-      If there is already a public / private key on the local machine, set up the remote server with the public key using <code>ssh-copy-id</code>.
-    </p>
-    <p>
-      This will need to be done for all user accounts for each account to have this capability.
-    </p>
-    <p>
-      <code>~$ ssh-copy-id username@server_ip_address</code>
-    </p>
-    <ul><li>enter password at prompt.</li></ul>
-    <p>
-      Login from local machine to remote server.
-    </p>
-    <p>
-        <code>~$ ssh username@server_ip_address</code>
-      </p>
-  </article>
-  <hr>
-  <h3>Disable Password Access</h3>
-  <article>
-    <p>
-      Confirm that the superuser account has admin privledges <code>sudo</code>.  Open the ssh configuration file in nano on the remote server.
-    </p>
-    <p>
-      <code>$ sudo nano /etc/ssh/sshd_config</code>
-    </p>
-    <p>
-      Find the 'Password Authentication' line, uncomment and change to 'no'.
-    </p>
-    <p>
-      <pre>PasswordAuthentication no</pre>
-    </p>
+<div class='content'>
 
-    <p>
-      Close <code>Ctrl+X</code>, Save <code>Y</code>, and Exit <code>Enter</code>
-    </p>
+  <section>
+    <h4>
+      Generate an SSH key pair on Local Machine
+    </h4>
+    <article>
+      <div>
+        <p>Entering a passphrase is optional but recommended.</p>
+        <p>rsa = the type of key</p>
+        <p>4096 is an enhanced security.</p>
+        <p>SSH keys are stored in <code>/home/.ssh</code></p>
+        <code>local: $ ssh-keygen -t rsa -b 4096</code>
+        <br>
+        <br>
+      </div>
+    </article>
     <br>
-    <p>
-      Restart sshd service.
-    </p>
-    <p>
-      <code>$ sudo systemctl restart ssh</code>
-    </p>
-    <p>
-      Before logging out or closing the terminal, open another terminal instance to verify SSH is still working as a login.
-    </p>
-    <p>
-      Accessing any user account with a regular password is now not possible.  Login via remote SSH only.
-    </p>
-  </article>
-  <hr>
 
-   
- </section>
- <div class="center"> <a href="server_setup_dns">Next: DNS</a> </div>
+    <h4>
+      Send Public Key to Server from Local Machine
+    </h4>
+    <article>
+      <div>
+        <p>The <code>scp</code> command finds the public key locally then creates the <code>.ssh</code>
+          directory on the server and copies the key into that directory into a file called
+          <code>authorized_keys</code>.
+        </p>
+        <code>local: $ ssh-copy-id server_user@server_ip</code>
+        <br>
+        <br>
+      </div>
+    </article>
+    <br>
+
+    <h4>
+      Test that SSH Login is Working
+    </h4>
+    <article>
+      <div>
+        <p>
+          Logout of server.  Then log back in from local.
+        </p>
+        <p>
+          No password should be asked for if the public key is working.
+        </p>
+        <code>local: $ ssh server_user@server_ip</code>
+        <br>
+        <br>
+      </div>
+    </article>
+    <br>
+
+    <h4>
+      Disable Root Access and Password Authentication on Server
+    </h4>
+    <article>
+      <div>
+        <p>
+          Make a backup of the <code>sshd_config</code> file.
+        </p>
+        <code>server: $ sudo cp /etc/ssh/sshd_config &nbsp; /etc/ssh/sshd_config.bak</code>
+        <br>
+        <br>
+        <p>
+          Open the <code>sshd_config</code> file in the nano or vi text editor.
+        </p>
+        <code>server: $ sudo nano /etc/ssh/sshd_config</code>
+        <br>
+        <br>
+        <p>
+          Find the <code>PermitRootLogin</code> and <code>PasswordAuthentication</code> entries in the file. Be
+          sure they are both uncommented and set them to 'no'. Close file and save changes.
+        </p>
+        <pre>
+PermitRootLogin no
+PasswordAuthentication no</pre>
+        <br>
+        <p>
+          Restart SSH service.
+        </p>
+        <code>server: $ sudo service restart ssh</code>
+        <br>
+        <br>
+
+  </section>
+  <br>
+  <section>
+    <div class="center">
+      <a href="#">Next: ?</a>
+    </div>
+  </section>
+
+</div>
+
 <% include ./partials/footer.ejs %>
