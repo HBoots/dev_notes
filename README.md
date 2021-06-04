@@ -11,18 +11,25 @@ It is a way to always have some personalized reference material handy and in one
 * Continue to improve styling
     * Remove unecessary hr tags
     * Find a better theme
-* Remake index with a list of heading that open a side menu of contents on hover.
+* Remake index with a list of headings that open a side menu of contents on hover.
 * Add Python and Django section
 * More Notes:
     * Git
         * set up repo
-        * set up SSH
         * branching / merging
+        * removing git commits before push
+        * removing git commits after push
+        * working with virtual environments
+        * put more spacing in current git page
+    * Python Virtual Environments
     * HTTP
     * Nginx
     * Apache
     * Linux Commands
-        * Networking
+        * Networking Commands
+        * Meta Commands
+        * File Commands
+        * Make a simple list for reminder and ref.  Memorize or look them up.
     * RegEx
 * Separate the Rules of the Road project
 * Add a new topic heading linking other projects
