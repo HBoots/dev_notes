@@ -71,7 +71,7 @@ code {
   font-style: italic;
   font-family: "Courier New";
   /* margin-left: 20px; */
-  padding: 8px 3px 8px 3px;
+  padding: 6px 3px 6px 3px;
 }
 
 pre {
@@ -87,7 +87,7 @@ code {
 }
 
 code.indent {
-  margin: 30px;
+  margin: 20px;
 }
 
 p code {
