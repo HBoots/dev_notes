@@ -26,6 +26,11 @@ app.get('/', function(req, res) {
     res.render('index', { pageTitle: pageTitle });
 });
 
+app.get('/django_start', function(req, res) {
+    var pageTitle = 'Django Start';
+    res.render('django_start', { pageTitle: pageTitle });
+});
+
 app.get('/git_notes', function(req, res) {
     var pageTitle = 'Git Notes';
     res.render('git_notes', { pageTitle: pageTitle });

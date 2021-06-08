@@ -1,0 +1,163 @@
+<% include ./partials/header.ejs %>
+  <% include ./partials/topbar.ejs %>
+
+    <div class='content'>
+
+      <section>
+        <h4>
+          Create a Project Directory and Navigate to It
+        </h4>
+        <article>
+          <div>
+            <p>
+              <code class='indent'>$ mkdir new_project</code>
+            </p>
+            <p>
+              <code class='indent'>$ cd new_project</code>
+            </p>
+          </div>
+        </article>
+        <br>
+        <h4>
+          Create a Virtual Environment
+        </h4>
+        <article>
+          <div>
+            <p>A virtual environment will isolate the project's dependencies from any other applications on the machine,
+              allowing the use of customized versions of those dependencies and the ability to create a
+              <code>requirements.txt</code> file so the correct dependencies can be loaded when the project is exported
+              and run elsewhere.</p>
+            <p>
+              <code class='indent'>$ python3 -m venv env</code>
+            </p>
+            <p>
+              <code class='indent'>$ source env/bin/activate</code>
+            </p>
+            <p>
+              <code>env</code> is the conventional name for a virtual environment. Typically virtual environments only
+              exist inside of a project so naming conflicts are not an issue.
+            </p>
+            <p>
+              Do NOT include the virtual environment when pushing the project to Github. Add the <code>env</code>
+              directory to <code>.gitignore</code>.
+            </p>
+            <p>
+              Instead create a <code>requirements.txt</code> file.
+            </p>
+            <p>
+              <code class='indent'>$ pip freeze &gt; requirements.txt</code>
+            </p>
+            <p>
+              Use this file to install dependencies when installing the project to a server.
+            </p>
+          </div>
+        </article>
+        <br>
+        <h4>
+          Install Django and Any Top Level Dependencies
+        </h4>
+        <article>
+          <div>
+            <p>
+              <code class='indent'>$ pip install django</code>
+            </p>
+            <p>
+              <code class='indent'>$ pip install djangorestframework</code>
+            </p>
+          </div>
+        </article>
+        <br>
+        <h4>
+          Start the Project Inside the Project Directory
+        </h4>
+        <article>
+          <div>
+            <p>
+              Use the <em>'current directory'</em> command <code>'.'</code> to install the project inside the current
+              directory instead of creating a new project directory.
+            </p>
+            <p>
+              <code class='indent'>$ django-admin startproject new_project . </code>
+            </p>
+          </div>
+        </article>
+        <br>
+        <h4>
+          Create a New Application
+        </h4>
+        <article>
+          <div>
+            <p>
+              <code class='indent'>$ cd new_project</code>
+            </p>
+            <p>
+              <code class='indent'>$ python3 manage.py startapp new_app</code>
+            </p>
+          </div>
+        </article>
+        <br>
+        <h4>
+          django-admin, django & manage.py
+        </h4>
+        <article>
+          <div>
+            <p>The <code>django-admin</code>, <code>django</code> and <code>manage.py</code> commands all essentially do
+              the same thing.</p>
+            <p>
+              <code class='indent'>$ django-admin &lt;command&gt;</code>
+            </p>
+            <p>
+              <code class='indent'>$ python3 manage.py &lt;command&gt;</code>
+            </p>
+            <p>
+              <code class='indent'>$ python3 -m django &lt;command&gt;</code>
+            </p>
+            <p>
+              <code>manage.py</code>, however, will also set the <code>DJANGO_SETTINGS_MODULE</code> environmental
+              variable so it points to the proect's <code>settings.py</code> file.
+            </p>
+            <p>
+              Generally it is easier to use <code>manage.py</code>. But, if it is necessary to switch between project
+              <code>settings.py</code> files, the other commands may be necessary.
+            </p>
+          </div>
+        </article>
+        <br>
+        <h4>
+          QUESTIONS & FURTHER STUDY
+        </h4>
+        <article>
+          <div>
+            <ul>
+              <li>
+                environmental variables
+              </li>
+              <li>
+                Review Model, View and Forms sections in the <a href="https://docs.djangoproject.com/en/3.2/">Django
+                  Docs</a>
+              </li>
+              <li>
+                Review <a
+                  href="https://www.youtube.com/watch?v=aHC3uTkT9r8&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=6">Schafer's
+                  lesson</a> on using the Django shell to work with database commands, as well as the <a
+                  href="https://docs.djangoproject.com/en/3.2/intro/tutorial02/#database-setup">Django Docs Tutorial</a>
+                on the same subject.
+              </li>
+            </ul>
+          </div>
+        </article>
+        <br>
+
+      </section>
+
+      <section>
+
+
+        <div class="center">
+          <a href="#">Next: #</a>
+        </div>
+      </section>
+
+    </div>
+
+    <% include ./partials/footer.ejs %>
