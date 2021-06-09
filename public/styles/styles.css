@@ -15,7 +15,14 @@ body {
 }
 
 article {
-  padding-left: 40px;
+  border: solid #ddd 0.5px;
+  border-radius: 5px;
+  padding: 5px 30px 5px 30px;
+  margin-bottom: 20px;
+}
+
+article > div {
+  padding-left: 20px;
 }
 
 .wrapper {
@@ -71,7 +78,7 @@ code {
   font-style: italic;
   font-family: "Courier New";
   /* margin-left: 20px; */
-  padding: 6px 3px 6px 3px;
+  padding: 6px 3px;
 }
 
 pre {
@@ -84,10 +91,7 @@ code {
   font-style: normal;
   border-radius: 2px;
   padding: 2px 8px;
-}
-
-code.indent {
-  margin: 20px;
+  margin: 0 3px;
 }
 
 p code {
@@ -105,14 +109,17 @@ h3 {
 }
 
 h4 {
+  font-style: italic;
   font-size: 1.3rem;
 }
 
+p,
+td,
 p td {
   font-size: 1em;
   font-style: normal;
   font-weight: normal;
-  color: #444;
+  color: #333;
 }
 
 hr {
@@ -124,16 +131,11 @@ hr {
 
 li {
   padding-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 ul.no-dot {
   list-style: none;
-}
-
-article {
-  border: solid #ddd 0.5px;
-  border-radius: 5px;
-  padding: 5px 30px 5px 30px;
 }
 
 .highlight {
@@ -154,7 +156,11 @@ article {
 }
 
 .indent {
-  padding-left: 20px;
+  margin-left: 20px;
+}
+
+code.indent {
+  margin-left: 20px;
 }
 
 .close {

@@ -1,0 +1,160 @@
+<% include ./partials/header.ejs %>
+  <% include ./partials/topbar.ejs %>
+
+    <div class='content'>
+
+      <section>
+        <article>
+          <h4>
+            ORM (Object Relational Mapper)
+          </h4>
+          <div>
+
+            <p>
+              Django's ORM allows access to a database in an Object Oriented manner.
+            </p>
+            <p>
+              Database structure is represented with Python classes called &nbsp;<u><em>models</em></u>&nbsp; kept in
+              the
+              apppcation's directory in the <code>models.py</code> file.
+              The ORM will map Django models into SQL tables, tailoring the SQL to whatever database is specified in
+              <code>project/settings.py</code>. Thus a Django apppcation can easily change databases.
+            </p>
+
+            <p>
+              e.g. SQLite in development, Postgres in production.
+            </p>
+
+
+          </div>
+        </article>
+        <br>
+        <article>
+          <h4>
+            Django Database Models
+          </h4>
+          <div>
+
+            <p>
+              The <code>models.py</code> file imports the &nbsp;<u><em>models</em></u>&nbsp; object from Django's
+              <code>db</code>
+              library.
+            </p>
+
+            <p>
+              <code class='indent'>from django.db import models</code>
+            </p>
+
+            <p>
+              Django will only use models from applications listed in <code>INSTALLED_APPS</code> in the
+              <code>settings.py</code> file.
+            </p>
+            <p>
+              A model is created with a class that inherits from the <code>Model</code> class from Django's
+              &nbsp;<u><em>models</em></u>&nbsp; library.
+            </p>
+
+            <p>
+              <code class='indent'>class Post(model.Models): ...</code>
+            </p>
+
+            <p>
+              Generally each model maps to a single database table. The class attributes will become the database fields
+              (columns).
+            </p>
+
+          </div>
+        </article>
+        <br>
+        <article>
+          <h4>
+            Model Class Fields
+          </h4>
+          <div>
+
+            <p>
+              Each field should be an instance of the appropriate &nbsp;<u><em>Field</em></u>&nbsp; class.
+            </p>
+            <p>
+              Django's built-in field types are listed in the <a
+                href="https://docs.djangoproject.com/en/3.2/ref/models/fields/#model-field-types">documentation</a>.
+            </p>
+            <p>
+              It is also possible to create <a
+                href="https://docs.djangoproject.com/en/3.2/howto/custom-model-fields/">custom fields</a>.
+            </p>
+            <p>
+              Every model is given an <em>_id</em>&nbsp; field to serve as an auto-incrementing primary key. This can
+              be overridden by specifying <code>primary_key=True</code> in one of the fields.
+            </p>
+
+          </div>
+        </article>
+        <br>
+        <article>
+          <h4>
+            Migrations
+          </h4>
+          <div>
+
+            <p>
+              Migrations are a simple means of updating and changing a database. Every change made to the database
+              models must have migrations created to effect those changes. This will create a file in the
+              <code>app/migrations/</code> directory.
+            </p>
+
+            <p>
+              <code class='indent'>python3 manage.py makemigrations</code>
+            </p>
+
+            <p>
+              Then it is necessary to apply those migrations to the database.
+            </p>
+
+            <p>
+              <code class='indent'>python3 manage.py migrate</code>
+            </p>
+
+            <p>
+              To view the actual SQL queries in the syntax of the database (specified in <code>setting.py</code>).
+            </p>
+
+            <p>
+              <code class='indent'>python3 manage.py sqlmigrate app_name migration #</code>
+            </p>
+            <p>
+              Get the migration number from the file name in the migrations directory.
+            </p>
+
+          </div>
+        </article>
+        <br>
+        <article>
+          <h4>
+            Many-to-One Relationships
+          </h4>
+          <div>
+
+            <p>
+              Use <code>django.db.models.ForeignKey</code> to define many-to-one relationships. Assign it like any other field type.
+            </p>
+
+            <p>
+              <code class='indent'>manufacturer = models.ForeignKey(Maker, ...)</code>
+            </p>
+
+
+          </div>
+        </article>
+
+      </section>
+      <section>
+
+        <div class="center">
+          <a href="#">Next: #</a>
+        </div>
+      </section>
+
+    </div>
+
+    <% include ./partials/footer.ejs %>

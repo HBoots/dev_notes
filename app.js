@@ -31,6 +31,11 @@ app.get('/django_start', function(req, res) {
     res.render('django_start', { pageTitle: pageTitle });
 });
 
+app.get('/django_db', function(req, res) {
+    var pageTitle = 'Django & Databases';
+    res.render('django_db', { pageTitle: pageTitle });
+});
+
 app.get('/git_notes', function(req, res) {
     var pageTitle = 'Git Notes';
     res.render('git_notes', { pageTitle: pageTitle });
